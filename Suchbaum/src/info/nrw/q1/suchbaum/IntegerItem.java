@@ -1,4 +1,5 @@
 package info.nrw.q1.suchbaum;
+
 public class IntegerItem implements ComparableContent<IntegerItem> {
 
 	private int content;
