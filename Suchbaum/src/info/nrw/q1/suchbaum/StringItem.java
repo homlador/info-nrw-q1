@@ -1,3 +1,4 @@
+package info.nrw.q1.suchbaum;
 public class StringItem implements ComparableContent<StringItem> {
 
 	private String content;

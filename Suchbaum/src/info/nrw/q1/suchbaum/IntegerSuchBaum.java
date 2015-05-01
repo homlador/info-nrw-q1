@@ -1,3 +1,4 @@
+package info.nrw.q1.suchbaum;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
