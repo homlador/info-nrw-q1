@@ -25,6 +25,7 @@ import javax.swing.WindowConstants;
 /**
  * Implementiere die mit TODO markierten Methoden:
  * 		wortMitHaeufigkeitEinfuegen()
+ * 		traverseInorderToList()
  * 
  * Ausserdem musst du in der Klasse StringItem eine Kleinigkeit anpassen
  * 
@@ -276,13 +277,7 @@ public class HaeufigkeitsBaum extends JFrame {
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected void traverseInorderToList(BinarySearchTree b, List l) {
-		if (b.isEmpty()) {
-			// nichts zu tun, da Baum leer ist
-		} else {
-			traverseInorderToList(b.getLeftTree(), l);
-			l.append(b.getContent());
-			traverseInorderToList(b.getRightTree(), l);
-		}
+		// TODO
 	}
 
 	@SuppressWarnings("rawtypes")
