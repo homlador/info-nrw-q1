@@ -1,4 +1,5 @@
 package info.nrw.q1.suchbaum;
+
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -21,7 +22,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-// TODO: 	public void baumausgleich() für Shannon-Fano-Kodierung
+/**
+ * Implementiere die mit TODO markierten Methoden:
+ * 		wortMitHaeufigkeitEinfuegen()
+ * 
+ * Zusatsaufgaben:
+ * 		erstelleSortierteListe()
+ *		gibHoehe()
+ */
 public class HaeufigkeitsBaum extends JFrame {
 
 	private static final String DATE = "2015-04-25";
@@ -162,25 +170,6 @@ public class HaeufigkeitsBaum extends JFrame {
 		setVisible(true);
 	}
 
-	@SuppressWarnings("rawtypes")
-	protected int gibHoehe(BinarySearchTree wurzel) {
-		if (wurzel == null || wurzel.isEmpty()) {
-			return 0;
-		} else {
-			int l = gibHoehe(wurzel.getLeftTree());
-			int r = gibHoehe(wurzel.getRightTree());
-			if (l > r) {
-				return 1 + l;
-			} else {
-				return 1 + r;
-			}
-
-			// Einfacher:
-			// Math.max(heightOfBinarySearchTree(t.getLeftTree()),
-			// heightOfBinarySearchTree(t.getRightTree()));
-		}
-	}
-
 	@Override
 	public void repaint() {
 		super.repaint();
@@ -211,13 +200,8 @@ public class HaeufigkeitsBaum extends JFrame {
 	private void wortMitHaeufigkeitEinfuegen(String s) {
 		StringItem item = new StringItem(s);
 		
-		StringItem old = (StringItem) baum.search(item);
-
-		if (old != null) {
-			old.setCount(old.getCount() + 1);
-		} else {
-			baum.insert(item);
-		}
+		// Tipp: StringItem old = baum. 
+		
 	}
 		
 	protected void suchen() {
@@ -246,8 +230,7 @@ public class HaeufigkeitsBaum extends JFrame {
 		}
 		repaint();
 	}
-	
-	
+		
 	private String[] inWorteTeilen(String s) {
 		return s.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
 	}
@@ -279,6 +262,7 @@ public class HaeufigkeitsBaum extends JFrame {
 
 		repaint();
 	}
+	
 	/**
 	 * Hilfsroutine, welche einen Baum inorder traversiert. 
 	 * Die inOrder-Traversierung liefert bei einem Suchbaum dann eine sortierte Liste.
@@ -329,24 +313,26 @@ public class HaeufigkeitsBaum extends JFrame {
 	protected List<CountedStringItem> erstelleSortierteListe(BinarySearchTree<StringItem> b) {
 		List<StringItem> l = new List<StringItem>();
 		traverseInorderToList(baum, l);		
+		
 		BinarySearchTree<CountedStringItem> sortierterBaum = new BinarySearchTree<CountedStringItem>();
-		
-		l.toFirst();
-		while (l.hasAccess()) {
-			StringItem item = (StringItem) l.getContent();
-			sortierterBaum.insert(new CountedStringItem(item.getContent(), item.getCount()));
-			l.next();
-		}
-		
-		JFrame frame = new JFrame("Sortierter Baum");
-		frame.setSize(800, 800);
-		frame.add( new BinarySearchTreeView<>(sortierterBaum));
-		frame.setVisible(true);
-		
 		List<CountedStringItem> sortierteListe = new List<CountedStringItem>();
-		traverseInorderToList(sortierterBaum, sortierteListe);
+		
+		// TODO
 
 		return sortierteListe;
+	}
+	
+	/**
+	 * TODO (Zusatzaufgabe)
+	 * 
+	 * @param wurzel Die Wurzel des Binärbaums
+	 * 
+	 * @return Die Höhe (Anzahl der Knoten auf dem längsten Pfad von der Wurzel)
+	 */	
+	@SuppressWarnings("rawtypes")
+	protected int gibHoehe(BinarySearchTree wurzel) {
+		// TODO
+		return -1;
 	}
 	
 	public static void main(String[] args) {
