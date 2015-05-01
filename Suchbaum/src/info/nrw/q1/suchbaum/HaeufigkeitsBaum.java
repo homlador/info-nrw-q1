@@ -204,10 +204,11 @@ public class HaeufigkeitsBaum extends JFrame {
 		
 	protected void suchen() {
 		String s = JOptionPane.showInputDialog(this, "Suchen", "");
-		if (baum.search(new StringItem(s)) == null) {
-			JOptionPane.showConfirmDialog(this, "nicht gefunden");
+		StringItem item = baum.search(new StringItem(s));
+		if (item == null) {
+			JOptionPane.showMessageDialog(this, "nicht gefunden");
 		} else {
-			JOptionPane.showConfirmDialog(this, "gefunden");
+			JOptionPane.showMessageDialog(this, "gefunden: " + item);
 		}
 	}
 
