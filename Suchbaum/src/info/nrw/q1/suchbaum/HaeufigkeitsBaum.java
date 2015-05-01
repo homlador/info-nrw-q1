@@ -1,4 +1,5 @@
 package info.nrw.q1.suchbaum;
+
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -162,25 +163,6 @@ public class HaeufigkeitsBaum extends JFrame {
 		setVisible(true);
 	}
 
-	@SuppressWarnings("rawtypes")
-	protected int gibHoehe(BinarySearchTree wurzel) {
-		if (wurzel == null || wurzel.isEmpty()) {
-			return 0;
-		} else {
-			int l = gibHoehe(wurzel.getLeftTree());
-			int r = gibHoehe(wurzel.getRightTree());
-			if (l > r) {
-				return 1 + l;
-			} else {
-				return 1 + r;
-			}
-
-			// Einfacher:
-			// Math.max(heightOfBinarySearchTree(t.getLeftTree()),
-			// heightOfBinarySearchTree(t.getRightTree()));
-		}
-	}
-
 	@Override
 	public void repaint() {
 		super.repaint();
@@ -246,8 +228,7 @@ public class HaeufigkeitsBaum extends JFrame {
 		}
 		repaint();
 	}
-	
-	
+		
 	private String[] inWorteTeilen(String s) {
 		return s.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
 	}
@@ -279,6 +260,7 @@ public class HaeufigkeitsBaum extends JFrame {
 
 		repaint();
 	}
+	
 	/**
 	 * Hilfsroutine, welche einen Baum inorder traversiert. 
 	 * Die inOrder-Traversierung liefert bei einem Suchbaum dann eine sortierte Liste.
@@ -347,6 +329,32 @@ public class HaeufigkeitsBaum extends JFrame {
 		traverseInorderToList(sortierterBaum, sortierteListe);
 
 		return sortierteListe;
+	}
+	
+	/**
+	 * TODO (Zusatzaufgabe)
+	 * 
+	 * @param wurzel Die Wurzel des Binärbaums
+	 * 
+	 * @return Die Höhe (Anzahl der Knoten auf dem längsten Pfad von der Wurzel)
+	 */	
+	@SuppressWarnings("rawtypes")
+	protected int gibHoehe(BinarySearchTree wurzel) {
+		if (wurzel == null || wurzel.isEmpty()) {
+			return 0;
+		} else {
+			int l = gibHoehe(wurzel.getLeftTree());
+			int r = gibHoehe(wurzel.getRightTree());
+			if (l > r) {
+				return 1 + l;
+			} else {
+				return 1 + r;
+			}
+
+			// Einfacher:
+			// Math.max(heightOfBinarySearchTree(t.getLeftTree()),
+			// heightOfBinarySearchTree(t.getRightTree()));
+		}
 	}
 	
 	public static void main(String[] args) {
