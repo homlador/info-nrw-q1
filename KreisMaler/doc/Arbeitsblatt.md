@@ -1,10 +1,20 @@
-# KreisMaler
+#### Informatik GK Q1: Lineare Datenstrukturen - Stack und Queue {center}
 
-![Die GUI](img/gui.png)
+# KreisMaler {blue}
+
+![Die GUI](img/gui.png) {center}
 
 Test
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+```java
+ public ContentType top() {
+    if (!this.isEmpty()) {
+      return head.getContent();
+    } else {
+      return null;
+    }
+  }
+```
 
 ## Teil I: Implementation
 
@@ -23,6 +33,7 @@ Pflichtaufgaben:
 Achtet darauf, euren Code zu kommentieren, d.h. jede Klasse und Methode muss durch JavaDoc-Kommentare kurz beschrieben werden (inkl. Parameter und Rückgabewert). Besondere Stellen in einzelnen Methoden sollten zusätzlich erläutert werden.
 
 ## Teil II: Dokumentation
-Erstellt ein Objektdiagramm, dass Beispielhaft die Vorgänge von Undo und Drucken dokumentiert. Nutzt dafür http://draw.io 
+
+Erstellt ein Objektdiagramm, dass Beispielhaft die Vorgänge von Undo und Drucken dokumentiert. Nutzt dafür [draw.io](http://draw.io)
 
 ## Abgabe
