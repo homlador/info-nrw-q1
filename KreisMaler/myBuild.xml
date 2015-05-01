@@ -1,0 +1,40 @@
+<?eclipse.ant.import?>
+<project basedir="." default="deploy" name="MyKreisMaler">
+    
+   	<loadproperties srcFile="build.properties"/>
+   
+	<target name="clean-deploy" depends="clean">
+        <delete dir="build" includeemptydirs="true"/>
+        <delete verbose="true">
+    		<fileset dir="doc" includes="**/*.pdf"/>
+  		</delete>
+    </target>
+        
+    <target name="deploy" depends="clean-deploy, markdown-pdf, zip, jar"/>
+    
+    <target name="markdown-pdf">
+    	<apply dir="doc" executable="/usr/local/bin/node">
+    		<arg value="conv.js"/>
+    		<fileset dir="doc" includes="*.md"/>
+  		</apply>
+    </target>
+    
+    <target name="jar" depends="clean-deploy, build">
+    	<mkdir dir="build/"/>
+    	<jar destfile="build/${package}-${version}.jar" basedir="." includes="info/**" excludes="**/*.java">
+        	<manifest>
+         		<attribute name="Main-Class" value="${mainClass}"/>
+      		</manifest>
+        </jar>
+    </target>
+    
+    <target name="zip" depends="clean-deploy">    
+    	<mkdir dir="build/${package}/"/>
+		<copy todir="build/${package}/">
+    		<fileset dir="." includes="**/*" excludes="build/**"/>
+		</copy>
+		<zip destfile="build/${package}-${version}.zip" basedir="build"/>
+    	<delete dir="build/${package}"/>
+    </target>
+    
+</project>
