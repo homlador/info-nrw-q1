@@ -59,11 +59,16 @@
         </java>
     </target>
     <target name="IntegerSuchBaum">
-        <java classname="IntegerSuchBaum" failonerror="true" fork="yes">
+        <java classname="info.nrw.q1.suchbaum.IntegerSuchBaum" failonerror="true" fork="yes">
             <classpath refid="Suchbaum.classpath"/>
         </java>
     </target>
     <target name="HaeufigkeitsBaum">
+        <java classname="info.nrw.q1.suchbaum.HaeufigkeitsBaum" failonerror="true" fork="yes">
+            <classpath refid="Suchbaum.classpath"/>
+        </java>
+    </target>
+    <target name="HaeufigkeitsBaum (1)">
         <java classname="HaeufigkeitsBaum" failonerror="true" fork="yes">
             <classpath refid="Suchbaum.classpath"/>
         </java>

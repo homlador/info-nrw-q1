@@ -21,7 +21,7 @@
     
     <target name="jar" depends="clean-deploy, build">
     	<mkdir dir="build/"/>
-    	<jar destfile="build/${package}-${version}.jar" basedir="." includes="info/**" excludes="**/*.java">
+    	<jar destfile="build/${package}-${version}.jar" basedir="bin" includes="info/**" excludes="**/*.java">
         	<manifest>
          		<attribute name="Main-Class" value="${mainClass}"/>
       		</manifest>
