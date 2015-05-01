@@ -1,3 +1,4 @@
+package info.nrw.q1.suchbaum;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;

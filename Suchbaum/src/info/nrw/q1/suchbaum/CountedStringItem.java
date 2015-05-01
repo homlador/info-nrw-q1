@@ -1,3 +1,4 @@
+package info.nrw.q1.suchbaum;
 public class CountedStringItem implements ComparableContent<CountedStringItem> {
 
 	private String content;
