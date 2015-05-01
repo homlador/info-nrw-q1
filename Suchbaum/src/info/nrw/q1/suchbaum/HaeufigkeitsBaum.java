@@ -26,11 +26,12 @@ import javax.swing.WindowConstants;
  * Implementiere die mit TODO markierten Methoden:
  * 		wortMitHaeufigkeitEinfuegen()
  * 		traverseInorderToList()
+ * 		erstelleSortierteListe()
  * 
  * Ausserdem musst du in der Klasse StringItem eine Kleinigkeit anpassen
  * 
  * Zusatsaufgaben:
- * 		erstelleSortierteListe()
+ * 		vonDateiEinfuegen()
  *		gibHoehe()
  */
 public class HaeufigkeitsBaum extends JFrame {
@@ -240,6 +241,8 @@ public class HaeufigkeitsBaum extends JFrame {
 	}
 
 	/**
+	 * TODO (Zusatzaufgabe)
+	 * 
 	 * Die Worte aus der Datei "text.txt" werden in den Suchbaum eingefügt
 	 */
 	protected void vonDateiEinfuegen() {
@@ -248,18 +251,7 @@ public class HaeufigkeitsBaum extends JFrame {
 
 		try {
 			bufferedReader = new BufferedReader(new FileReader("text.txt"));
-
-			while ((s = bufferedReader.readLine()) != null) {
-				// Jede Zeit in Kleinbuchstaben umwandeln,
-				// Sonderzeichen entfernen und in Worte aufteilen
-				String[] words = inWorteTeilen(s);
-
-				for (int i = 0; i < words.length; i++) {
-					if (!words[i].equals("")) {
-						wortMitHaeufigkeitEinfuegen(words[i]);
-					}
-				}
-			}
+			// TODO			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -302,7 +294,7 @@ public class HaeufigkeitsBaum extends JFrame {
 	}
 
 	/**
-	 * TODO (Zusatzaufgabe)
+	 * TODO
 	 * Der erstellte Baum soll genutzt werden, um eine sortierte Liste der häufigsten Wörter zu erhalten
 	 * Nutze zum Sortieren einen BinärenSuchbaum!
 	 * 
