@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Test Schülerversion
+ * 
+ *
+ */
 public class KreisMaler implements ActionListener
 {
 	private KreisMalerView kmv;
@@ -46,10 +51,9 @@ public class KreisMaler implements ActionListener
      */
     public void doAction(Action a) {
     	// TODO
-        undoStack.push(a);
-        a.doAction();
+
         
-        updateStatus();
+        //updateStatus();
     }
     
     /**
