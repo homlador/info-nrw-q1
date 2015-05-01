@@ -26,6 +26,8 @@ import javax.swing.WindowConstants;
  * Implementiere die mit TODO markierten Methoden:
  * 		wortMitHaeufigkeitEinfuegen()
  * 
+ * Ausserdem musst du in der Klasse StringItem eine Kleinigkeit anpassen
+ * 
  * Zusatsaufgaben:
  * 		erstelleSortierteListe()
  *		gibHoehe()
