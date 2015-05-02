@@ -29,7 +29,7 @@ public class HaeufigkeitsBaum extends JFrame {
 
 	private BinarySearchTreeView<StringItem> treeView;
 
-	public HaeufigkeitsBaum(final String title) {
+	public HaeufigkeitsBaum(String title) {
 		super(title);
 
 		treeView = new BinarySearchTreeView<StringItem>(baum);

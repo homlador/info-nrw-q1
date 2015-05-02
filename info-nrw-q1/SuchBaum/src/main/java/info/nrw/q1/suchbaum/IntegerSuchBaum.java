@@ -25,7 +25,7 @@ public class IntegerSuchBaum extends JFrame {
 
 	private BinarySearchTreeView<IntegerItem> treeView;
 
-	public IntegerSuchBaum(final String title) {
+	public IntegerSuchBaum(String title) {
 		super(title);
 
 		treeView = new BinarySearchTreeView<IntegerItem>(baum);
