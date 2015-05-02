@@ -5,7 +5,7 @@
 
 	<groupId>info.nrw.q1</groupId>
 	<artifactId>komplettpaket</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-VORLAGE</version>
 	<packaging>pom</packaging>
 
 	<name>info-nrw-q1</name>
