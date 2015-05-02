@@ -4,9 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.URI;
-import java.util.Properties;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,13 +19,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
+/**
+ * TODO: Konsole für Traversierungen 
+ * TODO: Tiereraten Anflanschen 
+ * TODO: Visualisierungen beim Einfügen etc.
+ */
 public class IntegerSuchBaum extends JFrame {
 
 	protected BinarySearchTree<IntegerItem> baum;
 
 	private BinarySearchTreeView<IntegerItem> treeView;
 
-	public IntegerSuchBaum(final String title) {
+	public IntegerSuchBaum(String title) {
 		super(title);
 
 		treeView = new BinarySearchTreeView<IntegerItem>(baum);
