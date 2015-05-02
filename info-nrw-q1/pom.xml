@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>info.nrw.q1</groupId>
+	<artifactId>komplettpaket</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>info-nrw-q1</name>
+	<url>https://homlador.github.io/informatik-nrw-q1/</url>
+
+	<properties>
+		<project.build.noGimli>false</project.build.noGimli>
+		<project.deployTo>/tmp/foo/</project.deployTo>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptor>src/assembly/src.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>gimli</executable>
+					<workingDirectory>doc</workingDirectory>
+					<skip>${project.build.noGimli}</skip>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.6.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>doc/</directory>
+							<includes>
+								<include>*.pdf</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>ch.mfrey.maven.plugin</groupId>
+				<artifactId>copy-maven-plugin</artifactId>
+				<version>0.0.2</version>
+				<executions>
+					<execution>
+						<id>deploy-to-local-directory</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<showfiles>true</showfiles>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}</directory>
+									<move>false</move>
+									<workOnFullPath>true</workOnFullPath>
+									<includes>
+										<include>*.jar</include>
+										<include>*.zip</include>
+									</includes>
+									<path>
+										<from>${project.build.directory}</from>
+										<to>${project.deployTo}/</to>
+									</path>
+								</resource>
+								<resource>
+									<directory>${project.basedir}/doc/</directory>
+									<move>false</move>
+									<workOnFullPath>true</workOnFullPath>
+									<includes>
+										<include>*.pdf</include>
+									</includes>
+									<path>
+										<from>${project.basedir}/doc/</from>
+										<to>${project.deployTo}/</to>
+									</path>
+								</resource>
+							</resources>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>${project.basedir}/src/main/java/info/nrw/q1/${project.artifactId}/Version.java</file>
+					<replacements>
+						<replacement>
+							<token>@version@</token>
+							<value>${project.version}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.google.code.maven-replacer-plugin
+										</groupId>
+										<artifactId>
+											replacer
+										</artifactId>
+										<versionRange>
+											[1.5.3,)
+										</versionRange>
+										<goals>
+											<goal>replace</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+	</dependencies>
+
+	<modules>
+		<module>KreisMaler</module>
+		<module>SuchBaum</module>
+	</modules>
+
+</project>
