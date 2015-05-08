@@ -67,7 +67,6 @@ public class IntegerSuchBaum extends JFrame {
 				final String projektSeite = "https://homlador.github.io/informatik-nrw-q1";
 				JButton b = new JButton(projektSeite);
 				b.addActionListener(new ActionListener() {
-					@Override
 					public void actionPerformed(ActionEvent evt) {
 						if (Desktop.isDesktopSupported()) {
 							try {
@@ -262,7 +261,7 @@ public class IntegerSuchBaum extends JFrame {
 
 	@SuppressWarnings("rawtypes")
 	protected List erstelleSortierteListe(BinarySearchTree baum) {
-		List l = new List<>();
+		List l = new List();
 		traverseInorderToList(baum, l);
 		return l;
 	}
