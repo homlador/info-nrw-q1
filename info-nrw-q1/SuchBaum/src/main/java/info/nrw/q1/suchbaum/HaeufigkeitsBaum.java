@@ -83,7 +83,6 @@ public class HaeufigkeitsBaum extends JFrame {
 				final String projektSeite = "https://homlador.github.io/informatik-nrw-q1";
 				JButton b = new JButton(projektSeite);
 				b.addActionListener(new ActionListener() {
-					@Override
 					public void actionPerformed(ActionEvent evt) {
 						if (Desktop.isDesktopSupported()) {
 							try {
