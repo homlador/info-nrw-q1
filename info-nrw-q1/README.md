@@ -1,8 +1,17 @@
 # informatik-nrw-q1
 Programme für den Informatik-Unterricht in NRW in der Oberstufe (Q1)
 
+## HOWTO
+
+* Clone git repository using git view
+* Import as general projects
+* Configure->Convert to Maven
+* Run As -> Maven build... package
 
 ## TODO
+* Bug: Packaging includes the pdf only if it already exits. Need to run package 2 times
+* To reproduce: mvn clean && mvn package -> docs missing 
+
 * Deploy:
 
 https://maven.apache.org/plugins/maven-assembly-plugin/advanced-module-set-topics.html
