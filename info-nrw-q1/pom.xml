@@ -46,6 +46,7 @@
 				</executions>
 			</plugin>
 
+			<!-- Generate Documentation / Worksheets from Markdown to pdf using gimli -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -200,6 +201,7 @@
 	<modules>
 		<module>KreisMaler</module>
 		<module>SuchBaum</module>
+		<module>Baelle</module>
 	</modules>
 
 </project>
