@@ -1,7 +1,5 @@
 package info.nrw.q1.baelle;
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Rectangle;
 
 /**
  * Die Klasse BallDemo bietet zwei kurze Demonstrationen, wie die
