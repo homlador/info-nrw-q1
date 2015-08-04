@@ -2,17 +2,17 @@
 
 # Fallende und springende Bälle
 
-**0.** Lade die Datei TODO.jar aus Moodle herunter.
+**0.** Lade die Datei *baelle-0.1.jar* aus Moodle herunter.
 Es handelt sich hierbei um ein Java-Archiv (JAR), das ein kompiliertes Java-Programm enthält.
 Führe die Datei durch einen Doppelklick aus: So ähnlich soll dein fertiges Programm aussehen!  
 
-**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Methode mit dem Namen *main()* in der Klasse *BaelleStart*. Importiere das Zip-Archiv Balle-Vorlage-TODO als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
+**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Methode mit dem Namen *main()* in der Klasse *BaelleStart*. Importiere das Archiv *baelle-0.1-VORLAGE-src.zip* als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
 
 **2.** Durch Ausführen des Programmes wird die Main-Methode aufgerufen. Die Main-Methode erstellt ein neues Exemplar der Klasse *BallSpringen* unter dem Namen *baelle*. Von dem Objekt *baelle* wird dann die Methode *springenLassen()* aufgerufen. Beschreibe detailliert, wie das Springen der Baelle umgesetzt wird! Gehe insbesondere darauf ein, welche Objekte erzeugt und welche Konstrollstrukturen verwendet werden?
 
-**3.** Erstelle in der Klasse *BallSpringen* einen zweiten Ball mit dem Namen *ball2*, der eine andere Farbe, Größe und Position hat, aber ebenfalls springen soll.
-
 **Zusatzaufgabe**: Recherchiere, warum die main() Methode diese besondere Signatur hat und was die einzelnen Bestandteile (public, static, void, String[] args) bedeuten.
+
+**3.** Erstelle in der Klasse *BallSpringen* einen zweiten Ball mit dem Namen *ball2*, der eine andere Farbe, Größe und Position hat, aber ebenfalls springen soll.
 
 **4.** Erstelle zu *ball* und *ball2* Objektdiagramme.
 
@@ -43,10 +43,9 @@ public class FarbBall extends Ball {
 }
 ```
 
-Die Klasse *FarbBall* ist eine Spezialisierung (Zu erkennen am Schlüsselwort *extends*) der Klasse *Ball* und erbt alle ihre Eigenschaften und Methoden.
-Sie muss über einen Konstruktor mit genau den gleichen Parametern wie ihre Oberklasse verfügen. Über das Schlüsselwort *super* wird hier der Konstruktor der Oberklasse aufgerufen. Danach wird ein Array vom Typ Color mit drei Plätzen angelegt und in diesem Array drei Color-Objekte gespeichert.
+Die Klasse *FarbBall* ist eine Spezialisierung (Zu erkennen am Schlüsselwort *extends*) der Klasse *Ball* und erbt alle ihre Eigenschaften und Methoden. Sie muss über einen Konstruktor mit genau den gleichen Parametern wie ihre Oberklasse verfügen. Über das Schlüsselwort *super* wird hier der Konstruktor der Oberklasse aufgerufen. Danach wird ein Array vom Typ Color mit drei Plätzen angelegt und in diesem Array drei Color-Objekte gespeichert.
 
-Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *FarbBall* nun vom normalen *Ball* unterscheidet. 
+Füge nun die folgenden Methoden zu der Klasse hinzu. Die Klasse *FarbBall* überschreibt hier also die Methode *zeichnen()* der Oberklasse und erhält eine eigene Methode *aendern()*. Überlege, was also diesen *FarbBall* vom normalen *Ball* unterscheidet. 
 
 ```java
 	public void zeichnen() {	
@@ -67,7 +66,7 @@ Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *
 
 **7.** Recherchiere, was die Schlüsselwörter *private* und *protected* bei den Objektvariablen *farbe* und *leinwand* in der Klasse *Ball* bedeuten und erkläre, warum hier was verwendet wurde! 
 
-**8.** Ändere die Methode springenLassen() so, dass 5 Bälle springen gelassen werden. Um nicht 5 mal den gleichen Code zu schreiben, benutze  dazu ein Array namens *baelle*, um alle Bälle zu verwalten. Fülle diese Array mit normalen Baellen und einem FarbBall. Tipp:
+**8.** Ändere die Methode *springenLassen()* so, dass 5 Bälle springen gelassen werden. Um nicht 5 mal den gleichen Code zu schreiben, benutze  dazu ein Array namens *baelle*, um alle Bälle zu verwalten. Fülle diese Array mit normalen Baellen und einem FarbBall. Tipp:
 
 ```java
 		// Array initialisieren
@@ -76,7 +75,7 @@ Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *
 		// Array belegen
         baelle[0] = new Ball(35, 35, 25, Color.blue, boden, leinwand);
         
-		// Array Durchlaufen und alle baelle zeichnen
+		// Array durchlaufen und alle Baelle zeichnen
         for (int i=0; i<baelle.length; i++) {
         	baelle[i].zeichnen();
         }
@@ -86,8 +85,10 @@ Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *
 
 **Fortgeschrittene**: Ändere die Methode springenLassen() so, dass der Benutzer angeben kann, wie viele Bälle springen sollen. 
 
-**Fortgeschrittene**: Zeiche einen Rahmen für die Leinwand, indem du ein Rechteckt mit 20 Bildschirmpunkten Abstand zum Fensterrand zeichnest. Implementiere diese Funktionalität in einer eigenen Mehtode zeichneRahmen() in der Klasse BallDemo und rufe diese Methode in der main() Methode auf. Verbessere dann die Methode zeichneRahmen(), so dass diese einem Rahmen in Abhängigkeit von der Groesse der Leinwand zeichnet. Lege die Groesse der Leinwand also nicht mit dieser Methode fest. Dazu musst du herausfinden, wie man mit einem Objekt der Klasse Dimension umgeht.
+**Fortgeschrittene**: Zeiche einen Rahmen für die Leinwand, indem du ein Rechteckt mit 20 Bildschirmpunkten Abstand zum Fensterrand zeichnest. Implementiere diese Funktionalität in einer eigenen Mehtode zeichneRahmen() in der Klasse BallDemo und rufe diese Methode in der main() Methode auf. 
 
-**Fortgeschrittene**: Schreibe eine Methode springenInderSchachtel(O). Diese Methode zeichnet ein Recheck (die Schachtel) und einen oder mehrere Bälle in dieser Schachtel. Benutze für die Bälle nicht die Klasse Ball, sondern legen Sie eine neue Klasse SchachtelBall an. Diese definiert Bälle, die sich in einer Schachtel bewegen und von deren Wänden abprallen. Die Anfangsposition und die Geschwindigkeit eines sollchen Balles sollen zufällig gewählt werden.
+**Zusatzaufgabe für Fortgeschrittene**: Verbessere dann die Methode zeichneRahmen(), so dass diese einem Rahmen in Abhängigkeit von der Groesse der Leinwand zeichnet. Lege die Groesse der Leinwand also nicht mit dieser Methode fest. Dazu musst du herausfinden, wie man mit einem Objekt der Klasse Dimension umgeht.
+
+**Non-Plus-Ultra-Aufgabe**: Schreibe eine Methode *springenInderSchachtel()*. Diese Methode zeichnet ein Recheck (die Schachtel) und einen oder mehrere Bälle in dieser Schachtel. Benutze für die Bälle nicht die Klasse Ball, sondern legen Sie eine neue Klasse *SchachtelBall* an. Diese definiert Bälle, die sich in einer Schachtel bewegen und von deren Wänden abprallen. Die Anfangsposition und die Geschwindigkeit eines sollchen Balles sollen zufällig gewählt werden.
 
  
