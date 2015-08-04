@@ -6,22 +6,19 @@
 Es handelt sich hierbei um ein Java-Archiv (JAR), das ein kompiliertes Java-Programm enthält.
 Führe die Datei durch einen Doppelklick aus: So ähnlich soll dein fertiges Programm aussehen!  
 
-**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Main-Methode in der Klasse BallDemoStart. Importiere das Zip-Archiv Balle-Vorlage-TODO als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
+**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Methode mit dem Namen *main()* in der Klasse *BaelleStart*. Importiere das Zip-Archiv Balle-Vorlage-TODO als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
 
-**2.** Durch Ausführen des Programmes wird die Main-Methode aufgerufen. Die Main() Methode erstellt ein neues Exemplar der Klasse *BallDemo* unter dem Namen *demo*. Von dem Objekt *demo* wird dann die Methode *zeichneDemo()* aufgerufen. Schau dir den Quellext der Methode *zeichneDemo()* in der Klasse *BallDemo* an und beschreibe, was hier demonstriert wird.
+**2.** Durch Ausführen des Programmes wird die Main-Methode aufgerufen. Die Main-Methode erstellt ein neues Exemplar der Klasse *BallSpringen* unter dem Namen *baelle*. Von dem Objekt *baelle* wird dann die Methode *springenLassen()* aufgerufen. Beschreibe detailliert, wie das Springen der Baelle umgesetzt wird! Gehe insbesondere darauf ein, welche Objekte erzeugt und welche Konstrollstrukturen verwendet werden?
 
-**3.** Ändere das Programm so, dass nach Programmstart nicht zeichneDemo(), sondern springenLassen() aufgerufen wird. Beschreibe detailliert,
-wie das Springen der Baelle umgesetzt wird! Gehe insbesondere darauf ein, welche Objekte erzeugt und welche Konstrollstrukturen verwendet werden?
-
-**4.** Erstelle einen zweiten Ball mit dem Namen *ball2*, der eine andere Farbe, Größe und Position hat, aber ebenfalls springen soll.
+**3.** Erstelle in der Klasse *BallSpringen* einen zweiten Ball mit dem Namen *ball2*, der eine andere Farbe, Größe und Position hat, aber ebenfalls springen soll.
 
 **Zusatzaufgabe**: Recherchiere, warum die main() Methode diese besondere Signatur hat und was die einzelnen Bestandteile (public, static, void, String[] args) bedeuten.
 
-**5.** Erstelle zu *ball* und *ball2* Objektdiagramme.
+**4.** Erstelle zu *ball* und *ball2* Objektdiagramme.
 
-**6.** Erstelle ein Implementationsdiagramm der Klasse *Ball*.
+**5.** Erstelle ein Implementationsdiagramm der Klasse *Ball*.
 
-**7.** Erstelle eine Klasse SpringBall (siehe Video-Tutorial) mit folgendem Quelltext:
+**6.** Erstelle eine Klasse *FarbBall* (siehe Video-Tutorial) mit folgendem Quelltext:
 
 ```java
 package info.nrw.q1.baelle;
@@ -47,7 +44,7 @@ public class FarbBall extends Ball {
 ```
 
 Die Klasse *FarbBall* ist eine Spezialisierung (Zu erkennen am Schlüsselwort *extends*) der Klasse *Ball* und erbt alle ihre Eigenschaften und Methoden.
-Sie muss über einen Konstruktor mit genau den gleichen Parametern wie ihre Oberklasse verfügen. Über das Schlüsselwort *super* wird hier der Konstruktor der Oberklasse aufgerufen. Danach wird ein Array vom Typ Color mit 3 Plätzen angelegt und in diesem Array drei Farb-Objekte gespeichert.
+Sie muss über einen Konstruktor mit genau den gleichen Parametern wie ihre Oberklasse verfügen. Über das Schlüsselwort *super* wird hier der Konstruktor der Oberklasse aufgerufen. Danach wird ein Array vom Typ Color mit drei Plätzen angelegt und in diesem Array drei Color-Objekte gespeichert.
 
 Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *FarbBall* nun vom normalen *Ball* unterscheidet. 
 
@@ -66,11 +63,24 @@ Füge nun die folgenden Methoden zu der Klasse hinzu und überlege, was diesen *
 	}	
 ```
 
-Ändere den Typ von *ball2* in der Methode springenLassen() von *Ball* zu FarbBall und überprüfe deine Überlegungen.
+Ändere den Typ von *ball2* in der Methode *springenLassen()* von *Ball* zu FarbBall und überprüfe deine Überlegungen.
 
-**8.** Recherchiere, was die Schlüsselwörter *private* und *protected* bei den Objektvariablen *farbe* und *leinwand* in der Klasse *Ball* bedeuten und erkläre, warum hier was verwendet wurde! 
+**7.** Recherchiere, was die Schlüsselwörter *private* und *protected* bei den Objektvariablen *farbe* und *leinwand* in der Klasse *Ball* bedeuten und erkläre, warum hier was verwendet wurde! 
 
-**9.** Ändere die Methode springenLassen() so, dass 10 Bälle springen gelassen werden. Um nich 10 mal den gleichen Code zu schreiben, benutze  dazu ein Array, um alle Bälle zu verwalten. Fülle diese Array mit normalen Baellen und einem FarbBall
+**8.** Ändere die Methode springenLassen() so, dass 5 Bälle springen gelassen werden. Um nicht 5 mal den gleichen Code zu schreiben, benutze  dazu ein Array namens *baelle*, um alle Bälle zu verwalten. Fülle diese Array mit normalen Baellen und einem FarbBall. Tipp:
+
+```java
+		// Array initialisieren
+		baelle = new Ball[5];
+		
+		// Array belegen
+        baelle[0] = new Ball(35, 35, 25, Color.blue, boden, leinwand);
+        
+		// Array Durchlaufen und alle baelle zeichnen
+        for (int i=0; i<baelle.length; i++) {
+        	baelle[i].zeichnen();
+        }
+```
 
 **Zusatzaufgabe**: Erzeuge mit dem Menüpunkt Export->Java->Jar eine ausführbare Datei deines Programmes.
 

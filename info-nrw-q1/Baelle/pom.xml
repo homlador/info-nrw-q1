@@ -6,11 +6,10 @@
 	<parent>
 		<groupId>info.nrw.q1</groupId>
 		<artifactId>komplettpaket</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1-VORLAGE-SNAPSHOT</version>
 	</parent>
-	<groupId>info.nrw.q1</groupId>
-	<artifactId>Baelle</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>baelle</artifactId>
+	<version>0.0.1-VORLAGE-SNAPSHOT</version>
 
 	<build>
 		<plugins>

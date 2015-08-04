@@ -345,6 +345,52 @@ public class Canvas
         }
     }
 
+    /**
+     * Demonstriere einige der Zeichenoperationen, 
+     * die von der Klasse Canvas angeboten werden.
+     */
+    public void zeichneDemo()
+    {
+        setFont(new Font("helvetica", Font.BOLD, 14));
+        setForegroundColor(Color.red);
+
+        drawString("Wir können Text ausgeben, ...", 20, 30);
+        wait(1000);
+
+        setForegroundColor(Color.black);
+        drawString("...Linien zeichnen...", 60, 60);
+        wait(500);
+        setForegroundColor(Color.gray);
+        drawLine(200, 20, 300, 50);
+        wait(500);
+        setForegroundColor(Color.blue);
+        drawLine(220, 100, 370, 40);
+        wait(500);
+        setForegroundColor(Color.green);
+        drawLine(290, 10, 320, 120);
+        wait(1000);
+
+        setForegroundColor(Color.gray);
+        drawString("...und Figuren!", 110, 90);
+
+        setForegroundColor(Color.red);
+
+        // Die Figur, die gezeichnet und bewegt werden soll.
+        int xPos = 10;
+        Rectangle rechteck = new Rectangle(xPos, 150, 30, 20);
+
+        // Das Rechteck über den Bildschirm bewegen.
+        for(int i = 0; i < 200; i ++) {
+            fill(rechteck);
+            wait(10);
+            erase(rechteck);
+            xPos++;
+            rechteck.setLocation(xPos, 150);
+        }
+        // Zum Schluss noch einmal zeichnen, damit es sichtbar bleibt.
+        fill(rechteck);
+    }
+    
     /************************************************************************
      * Nested class CanvasPane - the actual canvas component contained in the
      * Canvas frame. This is essentially a JPanel with added capability to
