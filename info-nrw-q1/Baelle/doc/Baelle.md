@@ -6,7 +6,7 @@
 Es handelt sich hierbei um ein Java-Archiv (JAR), das ein kompiliertes Java-Programm enthält.
 Führe die Datei durch einen Doppelklick aus: So ähnlich soll dein fertiges Programm aussehen!  
 
-**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Methode mit dem Namen *main()* in der Klasse *BaelleStart*. Importiere das Archiv *baelle-0.1-VORLAGE.zip* als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
+**1.** Damit ein Java-Programm gestartet werden kann, braucht es genau eine Main-Methode als Einsteigspunkt in das Programm. Die Baelle-Anwendung hat die Methode mit dem Namen *main()* in der Klasse *BaelleStart*. Importiere das Archiv *baelle-0.1-VORLAGE-src.zip* als neues Projekt in deine Entwicklungsumgebung und starte das Programm über die Main-Methode (Siehe Video-Tutorial im Moodle).
 
 **2.** Durch Ausführen des Programmes wird die Main-Methode aufgerufen. Die Main-Methode erstellt ein neues Exemplar der Klasse *BallSpringen* unter dem Namen *baelle*. Von dem Objekt *baelle* wird dann die Methode *springenLassen()* aufgerufen. Beschreibe detailliert, wie das Springen der Baelle umgesetzt wird! Gehe insbesondere darauf ein, welche Objekte erzeugt und welche Konstrollstrukturen verwendet werden?
 
