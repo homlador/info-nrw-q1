@@ -45,10 +45,11 @@ public class BallSpringen
         ball1 = new Ball(50, 60, 16, Color.blue, boden, leinwand);
         ball1.zeichnen();
         
-        // TODO ball2 hinzufügen
+        // TODO: ball2 hinzufügen
         ball2 = new FarbBall(70, 80, 20, Color.red, boden, leinwand);
         ball2.zeichnen();        
         
+        // TODO: Weitere 5 Baelle mit Hilfe eines Arrays hinzufügen
         baelle = new Ball[5];
         baelle[0] = new Ball(35, 35, 25, Color.blue, boden, leinwand);
         baelle[1] = new Ball(10, 10, 10, Color.red, boden, leinwand);
