@@ -1,12 +1,14 @@
 # informatik-nrw-q1
+
 Programme für den Informatik-Unterricht in NRW in der Oberstufe (Q1)
 
 ## HOWTO
 
-* Clone git repository using git view
-* Import as general projects
-* Configure->Convert to Maven
-* Run As -> Maven build... package
+### In Eclipse importieren
+Import -> Projects from git 
+
+### Paketieren
+Run As -> Maven build... -> Goals: package
 
 ## TODO
 * Bug: Packaging includes the pdf only if it already exits. Need to run package 2 times
