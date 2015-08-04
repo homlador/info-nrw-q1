@@ -86,9 +86,10 @@ public class BallDemo
         // Die Bälle erzeugen und anzeigen.
         Ball ball = new Ball(50, 50, 16, Color.blue, boden, leinwand);
         ball.zeichnen();
-        Ball ball2 = new Ball(70, 80, 20, Color.red, boden, leinwand);
-        ball2.zeichnen();
-
+        // TODO ball2 hinzufügen
+        FarbBall ball2 = new FarbBall(70, 80, 20, Color.red, boden, leinwand);
+        ball2.zeichnen();         
+        
         // Die Bälle springen lassen.
         boolean fertig =  false;
         while(!fertig) {
@@ -99,6 +100,7 @@ public class BallDemo
             if(ball.gibXPosition() >= 550 && ball2.gibXPosition() >= 550) {
                 fertig = true;
             }
+            
         }
         ball.loeschen();
         ball2.loeschen();

@@ -22,7 +22,7 @@ public class Ball
     private static final int GRAVITATION = 3;  // Einfluss der Gravitation
 
     private int bremsfaktor = 2;  // simuliert den Luftwiderstand
-    private Color farbe;
+    protected Color farbe;
     private int durchmesser;
     private int xPosition;
     private int yPosition;
