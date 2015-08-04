@@ -7,7 +7,7 @@
 		<version>0.0.1-VORLAGE-SNAPSHOT</version>
 	</parent>
 	<artifactId>baelle</artifactId>
-	<version>0.1-VORLAGE-SNAPSHOT</version>
+	<version>0.1-VORLAGE</version>
 
 	<build>
 		<plugins>
