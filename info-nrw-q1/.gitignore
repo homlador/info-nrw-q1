@@ -1,0 +1,7 @@
+**/target/
+**/doc/*.pdf
+**/.settings/*
+**/.project
+**/.classpath
+
+**/Version.java
