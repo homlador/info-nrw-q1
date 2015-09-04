@@ -1,6 +1,5 @@
 ## TODO
 
-* Umrisse Schiff + Hafen
 
 
 
