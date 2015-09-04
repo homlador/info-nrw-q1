@@ -1,12 +1,14 @@
 package info.nrw.q1.container;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class ContainerView {
 	
@@ -15,19 +17,19 @@ public class ContainerView {
 	private JMenuBar menu;
 	protected ContainerSideView sideView;
 	
+	public static final int WIDTH = 900;
+	public static final int HEIGHT = 400;
+	
 	private static int CONTAINER_WIDTH = 200;
 	private static final int CONTAINER_HEIGHT = 80;	
 	private static final int CONTAINER_Y = 200;	
 	private static final int CONTAINER_TITLE_Y = CONTAINER_Y + CONTAINER_HEIGHT + 20;
 	
-	private static int CONTAINER_STAPEL1_X = 20;
-	private static int CONTAINER_STAPEL2_X = CONTAINER_STAPEL1_X * 2 + CONTAINER_WIDTH;
-	private static int CONTAINER_STAPEL_HAFEN_X = CONTAINER_STAPEL2_X + CONTAINER_STAPEL2_X + 50;
+	private static int CONTAINER_STAPEL1_X = 180;
+	private static int CONTAINER_STAPEL2_X = CONTAINER_STAPEL1_X + CONTAINER_WIDTH + 50;
+	private static int CONTAINER_STAPEL_HAFEN_X = CONTAINER_STAPEL2_X + CONTAINER_WIDTH + 50;
 	
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 500;
-	
-	public ContainerView(final ContainerController controller) {
+	public ContainerView(final ContainerController controller, boolean showSideView) {
         leinwand = new Canvas("Container View", WIDTH, HEIGHT);        
         this.controller = controller;        
         menu = new JMenuBar();          
@@ -45,6 +47,15 @@ public class ContainerView {
 			}
 		});
         menuSetup.add(menuSetup1);
+                
+        JMenuItem menuSetup2 = new JMenuItem("Reset2");
+        menuSetup2.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent e) {
+				controller.reset2();
+				updateView();
+			}
+		});
+        menuSetup.add(menuSetup2);
         menu.add(menuSetup);
                
         JMenuItem menuBefehle = new JMenu("Befehle");        
@@ -57,19 +68,19 @@ public class ContainerView {
 		});
         menuBefehle.add(menuEntladen);
         
-        JMenuItem menuEntladenCodeX = new JMenuItem("Code X entladen");
+        JMenuItem menuEntladenCodeX = new JMenuItem("Rote Container entladen");
         menuEntladenCodeX.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				controller.schiffEntladenCodeX();
+				controller.schiffEntladenRot();
 				updateView();
 			}
 		});
         menuBefehle.add(menuEntladenCodeX);
         
-        JMenuItem menuEntladenNichtCodeX = new JMenuItem("Entladen außer Code X");
+        JMenuItem menuEntladenNichtCodeX = new JMenuItem("Entladen außer rote Container");
         menuEntladenNichtCodeX.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				controller.schiffEntladenNichtCodeX();
+				controller.schiffEntladenNichtRot();
 				updateView();
 			}
 		});
@@ -87,13 +98,18 @@ public class ContainerView {
         menu.add(menuBefehle);        
         
         JMenuItem menuHelp = new JMenu("Hilfe");        
-        JMenuItem menuZeigen = new JMenuItem("Stapel Zeigen");
+        JMenuItem menuZeigen = new JMenuItem("Seitenansicht");
         menuZeigen.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Passwort
-				if (sideView == null) {
-					sideView = new  ContainerSideView(controller);
-				}
+				String s = JOptionPane.showInputDialog("Passwort?", "");				
+				if (s.equals("stack")) {
+					if (sideView == null) {
+						sideView = new ContainerSideView(controller);
+					}
+				} else {
+					JOptionPane.showMessageDialog(leinwand.getJFrame(), "Ahaha! You didn't say the magic word!");
+					
+				}			
 			}
 		});
         menuHelp.add(menuZeigen);
@@ -101,7 +117,11 @@ public class ContainerView {
         leinwand.getJFrame().setJMenuBar(menu);        
         leinwand.setVisible(true);
                 
-        updateView();        
+        updateView();   
+        
+        if (showSideView) {
+        	sideView = new ContainerSideView(controller);
+        }
 	}
 
 	private void addStapelBefehle(final String titel, final int x, final Stack<Container> stapel) {        
@@ -151,10 +171,20 @@ public class ContainerView {
 	public void updateView() {	
 		leinwand.erase();
 		leinwand.setForegroundColor(Color.BLACK);
-		leinwand.drawString("Das Container-Schiff von oben:", 300, 20);
+		leinwand.drawString("Der Containerterminal von oben:", 200, 20);
+		
+		Rectangle ship = new Rectangle(CONTAINER_STAPEL1_X-10, CONTAINER_Y-60, 500, 200);
+		leinwand.draw(ship);
+		
+		Rectangle dock = new Rectangle(CONTAINER_STAPEL_HAFEN_X-10, -10, 300, 800);
+		leinwand.draw(dock);
+		
+		leinwand.drawLine(0, CONTAINER_Y+50, CONTAINER_STAPEL1_X-10, CONTAINER_Y-60);
+		leinwand.drawLine(0, CONTAINER_Y+50, CONTAINER_STAPEL1_X-10, CONTAINER_Y+140);
+		
 		drawContainerStapel("Stapel 1", CONTAINER_STAPEL1_X, controller.getStapel1() );
 		drawContainerStapel("Stapel 2", CONTAINER_STAPEL2_X, controller.getStapel2());
-		drawContainerStapel("Stapel 3", CONTAINER_STAPEL_HAFEN_X, controller.getStapelHafen() );
+		drawContainerStapel("Hafen", CONTAINER_STAPEL_HAFEN_X, controller.getStapelHafen() );
 		
 		if (sideView != null) {
 			sideView.updateView();
@@ -168,10 +198,11 @@ public class ContainerView {
 		Container oberster = containerStapel.top();
 		
 		// FIXME: Gemein
+		// Alternativ: nach top() anzeigen, nur SelectedContainer verändern
 		if (controller.getSelectedContainer() != oberster) {
 			return;
 		}
-		
+			
 		if (oberster != null) {
 			leinwand.setForegroundColor(oberster.getFarbe());
 			leinwand.fillRectangle(x, CONTAINER_Y, CONTAINER_WIDTH, CONTAINER_HEIGHT);
@@ -185,4 +216,8 @@ public class ContainerView {
 		}
 	}
 
+	public void updateViewAndWait() {
+		updateView();
+		leinwand.wait(500);
+	}
 }
