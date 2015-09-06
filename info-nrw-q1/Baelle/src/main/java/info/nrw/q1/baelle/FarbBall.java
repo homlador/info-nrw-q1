@@ -13,7 +13,7 @@ public class FarbBall extends Ball {
 		farben = new Color[3];
 		farben[0] = farbe;
 		farben[1] = Color.BLACK;
-		farben[1] = Color.BLUE;
+		farben[2] = Color.BLUE;
 	}
 
 	public void zeichnen() {	
