@@ -201,6 +201,7 @@
 		<module>KreisMaler</module>
 		<module>SuchBaum</module>
 		<module>Baelle</module>
+		<module>container</module>
 	</modules>
 
 </project>
