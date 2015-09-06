@@ -16,6 +16,7 @@ public class ContainerView {
 	private ContainerController controller;
 	private JMenuBar menu;
 	protected ContainerSideView sideView;
+	protected boolean displayTop;
 	
 	public static final int WIDTH = 900;
 	public static final int HEIGHT = 400;
@@ -98,6 +99,15 @@ public class ContainerView {
         menu.add(menuBefehle);        
         
         JMenuItem menuHelp = new JMenu("Hilfe");        
+        JMenuItem menuTop = new JMenuItem("Top Element immer anzeigen");
+        menuTop.addActionListener(new ActionListener() {			
+			public void actionPerformed(ActionEvent e) {
+				displayTop = true;		
+				updateView();
+			}
+		});
+        menuHelp.add(menuTop);
+        
         JMenuItem menuZeigen = new JMenuItem("Seitenansicht");
         menuZeigen.addActionListener(new ActionListener() {			
 			public void actionPerformed(ActionEvent e) {
@@ -197,9 +207,7 @@ public class ContainerView {
         
 		Container oberster = containerStapel.top();
 		
-		// FIXME: Gemein
-		// Alternativ: nach top() anzeigen, nur SelectedContainer verändern
-		if (controller.getSelectedContainer() != oberster) {
+		if (!displayTop && controller.getSelectedContainer() != oberster) {
 			return;
 		}
 			
@@ -216,8 +224,4 @@ public class ContainerView {
 		}
 	}
 
-	public void updateViewAndWait() {
-		updateView();
-		leinwand.wait(500);
-	}
 }

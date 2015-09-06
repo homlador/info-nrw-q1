@@ -21,8 +21,7 @@ public class ContainerController {
 		containerStapelHafen = new Stack<Container>();
 		
 		reset();		
-		// FIXME: Seitenansicht per Default aus
-		view = new ContainerView(this, true);
+		view = new ContainerView(this, false);
 	}
 	
 	public void reset() {
@@ -95,6 +94,9 @@ public class ContainerController {
 		JOptionPane.showMessageDialog(null, "isEmpty: " + stapel.isEmpty());
 	}
 	
+	/**
+	 * Das Schiff wird komplett entladen
+	 */
 	public void schiffEntladen() {
 		while (containerStapel1.isEmpty() == false) {
 			Container oberster = containerStapel1.top();
@@ -110,6 +112,10 @@ public class ContainerController {
 		}
 	}
 
+	// TODO: Methode schreiben
+	/**
+	 * Nur rote Container werden entladen
+	 */
 	public void schiffEntladenRot() {
 		while (containerStapel1.isEmpty() == false) {
 			Container oberster = containerStapel1.top();
@@ -132,6 +138,10 @@ public class ContainerController {
 		}
 	}
 
+	// TODO: Methode schreiben
+	/**
+	 * Alle Container, außer die roten werden entladen
+	 */	
 	public void schiffEntladenNichtRot() {
 		while (containerStapel1.isEmpty() == false) {
 			Container oberster = containerStapel1.top();
@@ -154,6 +164,10 @@ public class ContainerController {
 		}
 	}
 
+	// TODO: Methode schreiben
+	/**
+	 * Die Container sollen am Ende nach Code sortiert im Hafen stehen, der Contaienr mit dem kleinsten Code ganz unten
+	 */
 	public void schiffEntladenSortiert() {
 		allesAufStapel1();
 		
@@ -164,43 +178,45 @@ public class ContainerController {
 	}
 	
 	private void kleinsteVon1AufHafen() {
-		JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen...");
+		JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen()...");
 		
-		// Der oberste wird als kleinste angenommen
+		// Der oberste wird als kleinstes angenommen
 		Container kleinste = containerStapel1.top();
 		containerStapelHafen.push(kleinste);
 		containerStapel1.pop();
 		
-		view.updateViewAndWait();
+		view.updateView();
 		
 		while (containerStapel1.isEmpty() == false) {
-			//JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen: Stapel1 nicht leer...");
+			JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen: Stapel1 nicht leer. Vergleiche.");
 			
 			Container oberster = containerStapel1.top();
 			if (oberster.getCode() < kleinste.getCode()) {
+				JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen: Neues kleinste gefunden!");
 				containerStapel2.push(kleinste);
 				containerStapelHafen.pop();
 				containerStapelHafen.push(oberster);
 				containerStapel1.pop();
 				kleinste = oberster;
 			} else {
+				JOptionPane.showMessageDialog(null, "kleinsteVon1AufHafen: Nach Hafen gestapelt");
 				containerStapel2.push(oberster);
 				containerStapel1.pop();
 			}		
-			// FIXME: Visualisation hakt
-			view.updateViewAndWait();
+			view.updateView();
 		}		
 	}
 
 	private void allesAufStapel1() {
-		JOptionPane.showMessageDialog(null, "allesAufStapel1...");
+		JOptionPane.showMessageDialog(null, "allesAufStapel1()");
 		
 		while (containerStapel2.isEmpty() == false) {
 			Container oberster = containerStapel2.top();
 			containerStapel1.push(oberster);
 			containerStapel2.pop();
+			view.updateView();
 		}
 		
-		view.updateView();
+		
 	}
 }

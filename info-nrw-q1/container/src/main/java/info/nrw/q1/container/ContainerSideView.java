@@ -3,6 +3,8 @@ package info.nrw.q1.container;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import javax.swing.RepaintManager;
+
 public class ContainerSideView {
 
 	private ContainerController controller;
