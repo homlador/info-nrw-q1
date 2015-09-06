@@ -2,13 +2,12 @@ package info.nrw.q1.baelle;
 import java.awt.Color;
 
 /**
- * Die Klasse BallDemo bietet zwei kurze Demonstrationen, wie die
- * Klasse Canvas benutzt werden kann.
+ * Die Klasse BallSpringen lässt Bälle auf einer Leinwand springen und
+ * benutzt dazu die Klasse Canvas
  *
  * @author Michael Koelling und David J. Barnes
  * @version 2008.03.30
  */
-
 public class BallSpringen   
 {
     private Canvas leinwand; // Das ist der Hintergrund, auf dem gezeichnet werden kann
@@ -43,11 +42,11 @@ public class BallSpringen
         ball1 = new Ball(50, 60, 16, Color.blue, boden, leinwand);
         ball1.zeichnen();
         
-        // TODO: ball2 hinzufügen
+        // TODO (Aufgabe 3): ball2 hinzufügen
         ball2 = new FarbBall(70, 80, 20, Color.red, boden, leinwand);
         ball2.zeichnen();        
         
-        // TODO: Weitere 5 Baelle mit Hilfe eines Arrays hinzufügen
+        // TODO (Aufgabe 8): Weitere 5 Baelle mit Hilfe eines Arrays hinzufügen
         baelle = new Ball[5];
         baelle[0] = new Ball(35, 35, 25, Color.blue, boden, leinwand);
         baelle[1] = new Ball(10, 10, 10, Color.red, boden, leinwand);
@@ -62,6 +61,7 @@ public class BallSpringen
         leinwand.wait(1000);
         
         // Die Bälle springen lassen.
+        // TODO (Aufgabe 2): Erkläre die folgenden Zeilen!
         boolean fertig =  false;
         while(!fertig) {
             leinwand.wait(50);           // kurze Pause
@@ -81,5 +81,4 @@ public class BallSpringen
         ball1.loeschen();
         ball2.loeschen();
     }
-
 }
