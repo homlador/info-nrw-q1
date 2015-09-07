@@ -1,4 +1,4 @@
-# Übungsaufgabe „Polymorphie“:
+# Übungsaufgabe „Polymorphie“
 
 ```java
 public class TierHeim
@@ -67,10 +67,12 @@ Hinweis: Der Dienst „System.out.print()“ gibt seine Parameter auf der Konsol
 
 1. Erstelle ein Diagramm aller Klassen, um die Ist-Beziehungen zu visualisieren und dir einen Überblick zu verschaffen.
 
-2. Ermittle die Ausgabe der Methode tierChor() ohne das Programm auszuführen!
+2. Ermittle die Ausgabe der Methode tierChor() ohne das Programm auszuführen und schreibe das von dir erwartete Ergebnis auf (7 Zeilen).
 
 3. Überprüfe deine Ergebnisse aus 2, indem du das Programm ausführst.
 
 4. Erstelle eine neues Tier: KampfKatze, welche nicht nur „Miau“ macht, sondern „Fauch Miau“
 
 5. Erstelle ein neues Tier deiner Wahl!
+
+6. Ergänze die Katze um eine Methode *tanzen()*, welche die Ausgabe "*tanz*" erzeugt. Bearbeite die Methode *tierChor()* in TierHeim.java so, dass alle Katzen (die anderen Tiere können das nicht!) nach dem Singen auch Tanzen. Recherchiere dazu den Operator *instanceof*. 
