@@ -75,4 +75,25 @@ Hinweis: Der Dienst „System.out.print()“ gibt seine Parameter auf der Konsol
 
 5. Erstelle ein neues Tier deiner Wahl!
 
-6. Ergänze die Katze um eine Methode *tanzen()*, welche die Ausgabe "*tanz*" erzeugt. Bearbeite die Methode *tierChor()* in TierHeim.java so, dass alle Katzen (die anderen Tiere können das nicht!) nach dem Singen auch Tanzen. Recherchiere dazu den Operator *instanceof*. 
+6. Ergänze die Katze um eine Methode *tanzen()*, welche die Ausgabe "\*tanz\*" erzeugt. Bearbeite die Methode *tierChor()* in TierHeim.java so, dass alle Katzen nach dem Singen auch tanzen. Achtung: Nicht jedes Tier kann tanzen! Recherchiere daher die Verwendung des Operators *instanceof*.
+
+7. Zusatzaufgabe: Die Hunde können nicht tanzen, können aber mit dem Schwanz wedeln, was sie zu dem Lied nun auch tun wollen. Implementiere dies, analog zur Aufgabe 6!
+
+*Fortgeschrittene*
+
+8. Langsam wird es kompliziert: Komischerweise haben die Hunde das Wedeln mit dem Schwanz auch den Mäusen beigebracht. Nun gibt es zwei verschiedene Tiere, die aber eine ähnliche Fähigkeit haben. Um eine wiederholte Abfrage mit *instanceof* zu vermeiden, soll hier Vererbung genutzt werden. Die beiden Klassen sind jedoch schon Erben der Klasse Tier und in Java kann eine Klasse aber immer nur eine Oberklasse haben, da Mehrfachvererbung viele Probleme bereiten kann. Um die neue Fähigkeit verwalten zu können, soll das *Interface* KannWedeln erstellt werden, das die Methode *wedeln()* definiert:
+
+```java
+package info.nrw.q1.tierchor;
+
+public interface KannWedeln {
+	public void wedeln();
+}
+```
+Ergänze die Klasse Hund, um zu zeigen, dass der Hund die Methoden des Interface KannWedeln implementiert. 
+
+```java
+public class Hund extends Tier implements KannWedeln
+```
+
+Lasse nun auch die Klasse Maus das Interface implementieren und bearbeite dann die Methode *tierChor()* in TierHeim analog zu Aufgabe 6 so, dass alle Tiere, welche eine Instanz von KannWedeln sind auch wedeln.
