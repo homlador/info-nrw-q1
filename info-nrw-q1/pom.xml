@@ -201,6 +201,7 @@
 		<module>KreisMaler</module>
 		<module>SuchBaum</module>
 		<module>Baelle</module>
+		<module>bahnhof</module>
 		<module>container</module>
 		<module>mensa</module>
 	</modules>
