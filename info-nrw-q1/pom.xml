@@ -201,9 +201,12 @@
 		<module>KreisMaler</module>
 		<module>SuchBaum</module>
 		<module>Baelle</module>
-		<module>Container</module>
+		
 		<!--   <module>makeymakey</module> -->
     	<module>tierchor</module>
-  </modules>
+    	<module>bahnhof</module>
+    	<module>container</module>
+    	<module>mensa</module>
+	</modules>
 
 </project>
