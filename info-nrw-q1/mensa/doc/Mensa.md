@@ -2,16 +2,14 @@
 
 # Warteschlange in der Mensa
 
-Das Programm simuliert die Warteschlange der Schul-Mensa: Schüler stellen sich an und werden in dieser Reihenfolge bedient.
+Das Programm simuliert die Warteschlange einer Schulmensa: Schüler stellen sich an und werden bedient. Dabei erfolgt die Bedienung in der Reihenfolge ihres Anstellens.
 
 ## Aufgaben
 
-*Fortgeschrittene*: Vervollständige die Implementation der Klasse Queue.
-Teste deine Implementation mit dem UnitTest: Öffne die Klasse QueueTest, dann wähle "Run->Run As->JUnit Test"
+*Fortgeschrittene*: Öffne die Klasse *QueueTest*, dann wähle "Run->Run As->JUnit Test". Diese Klasse ist ein sog. Unit-Test, welche die Funktionalität der Klasse Queue testet. Zu Beginn werden alle Tests fehlschlagen, die die Klasse *Queue* noch nicht fertig programmiert ist. Vervollständige die Implementation der Klasse *Queue* bis sie alle Unit-Tests besteht!
 
-1. Lies die Dokumentation zur Abi NRW Klasse Queue. und erstelle ein Objektdiagramm mit den Klassen Queue und QueueNode, inkl. Beziehungen zwischen den Objekten für die folgende Situation:
+1. Betrachte den Quelltext der Klasse *Queue*. Erstelle ein Objektdiagramm mit den Klassen Queue und QueueNode, inkl. Beziehungen zwischen den Objekten für eine Warteschlange mit den Schüler Alice, Bob und Charlie. Markiere farbig, wie sich das Objektidagramm verändert, wenn dequeue() aufgerufen wird.
 
 2. Implementiere die fehlenden Methoden in der Klasse MensaController.
 
 3. Beschreibe, wie das Programm die MVC-Architektur umsetzt.
-
