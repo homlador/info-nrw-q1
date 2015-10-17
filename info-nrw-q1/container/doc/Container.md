@@ -20,11 +20,37 @@ Danach kannst du ihn mit dem Aufruf von push() auf einen anderen Stapel setzen. 
 usw.*
 
 4. Betrachte zunächst den Konstruktor ContainerController(), um zu sehen, wie die Stacks initialisiert werden. Implementiere dann die Punkte aus dem Menu *Befehle*, indem du die folgendenden Methoden der Klasse ContainerController schreibst:
-a) *schiffEntladen()*
-b) *schiffEntladenRot()*
-c) *schiffEntladenNichtRot()*
-d) *schiffEntladenSortiert()*
+	- a) *schiffEntladen()*
+	- b) *schiffEntladenRot()*
+	- c) *schiffEntladenNichtRot()*
+	- d) *schiffEntladenSortiert()*
 
-5. Das Programm ist nach dem Model-View-Controller Architekturmuster aufgebaut. Recherchiere und erkläre das Muster anhand des vorliegenden Programmes!
 
-6. Erkläre wie in der Klasse *Stack* eine Verkettung von Objekten (*StackNode*) zur Umsetzung des Stapels benutzt wird.
+Pseudocode für Aufgabenteil d)
+```
+lege alle container auf stapel1
+solange noch container da sind
+	lege den kleinsten container von stapel1 auf den hafenstapel
+	lege alle container auf stapel1
+ende
+
+
+lege den kleinsten container von stapel1 auf den hafenstapel
+lege den obersten von stapel1 auf den hafenstapel
+
+solange noch container auf stapel1
+	wenn der oberste container von stapel1 kleiner ist als der oberste container vom hafenstapel
+		lege obersten des hafenstapel auf stapel2
+		lege obersten von stapel1 auf hafenstapel
+	sonst
+		lege obersten container von stapel1 auf stapel2
+	ende
+ende
+```
+
+TODO: Alternativ wie im Beispiel Güterbahnhof nur von einem stapel entladen und solange wert kleiner ist umstapeln 
+
+
+5. Erkläre wie in der Klasse *Stack* eine Verkettung von Objekten (*StackNode*) zur Umsetzung des Stapels benutzt wird.
+
+6. Das Programm ist nach dem Model-View-Controller Architekturmuster aufgebaut. Recherchiere und erkläre das Muster anhand des vorliegenden Programmes!

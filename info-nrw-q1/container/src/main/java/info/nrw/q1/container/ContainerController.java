@@ -100,14 +100,23 @@ public class ContainerController {
 	public void schiffEntladen() {
 		while (containerStapel1.isEmpty() == false) {
 			Container oberster = containerStapel1.top();
-			containerStapelHafen.push(oberster);
+			containerStapel2.push(oberster);
 			containerStapel1.pop();
 		}
+				
+		while (containerStapel1.isEmpty() == false) {
+			Container oberster = containerStapel2.top();
+			if( oberster.getCode() > 3 ) {
+				containerStapelHafen.push(oberster);
+			}
+			containerStapel2.pop();
+		}
 		
-		// TODO: Entladen des zweiten Stapels ergänzen
 		while (containerStapel2.isEmpty() == false) {
 			Container oberster = containerStapel2.top();
-			containerStapelHafen.push(oberster);
+			if( oberster.getCode() < 3 ) {
+				containerStapelHafen.push(oberster);
+			}
 			containerStapel2.pop();
 		}
 	}
@@ -166,7 +175,7 @@ public class ContainerController {
 
 	// TODO: Methode schreiben
 	/**
-	 * Die Container sollen am Ende nach Code sortiert im Hafen stehen, der Contaienr mit dem kleinsten Code ganz unten
+	 * Die Container sollen am Ende nach Code sortiert im Hafen stehen, der Container mit dem kleinsten Code ganz unten
 	 */
 	public void schiffEntladenSortiert() {
 		allesAufStapel1();
@@ -215,8 +224,6 @@ public class ContainerController {
 			containerStapel1.push(oberster);
 			containerStapel2.pop();
 			view.updateView();
-		}
-		
-		
+		}	
 	}
 }
