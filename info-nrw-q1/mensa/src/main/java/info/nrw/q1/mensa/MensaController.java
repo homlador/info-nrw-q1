@@ -19,23 +19,26 @@ class MensaController implements ActionListener {
 		} else if (e.getActionCommand().equals("bedienen")) {
 			bedienen();
 		} else if (e.getActionCommand().equals("Alle bedienen")) {
-			allebedienen();
+			alleBedienen();
 		}
 		anzeigeAktualisieren();
 	}
 
 	private void anstellen() {
+		// TODO
 		Schueler letzter = new Schueler(ui.getEingabeSchueler());
 		warteschlange.enqueue(letzter);
 	}
 
 	private void bedienen() {
+		// TODO
 		Schueler naechster = warteschlange.front();
 		System.out.println("Schueler wird bedient: " + naechster);
 		warteschlange.dequeue();
 	}
 
-	private void allebedienen() {
+	private void alleBedienen() {
+		// TODO
 		while (warteschlange.isEmpty() == false) {
 			bedienen();
 		}
@@ -44,5 +47,4 @@ class MensaController implements ActionListener {
 	private void anzeigeAktualisieren() {
 		ui.setAnzeigeNaechster(warteschlange.front());
 	}
-
 }
