@@ -25,23 +25,21 @@ class MensaController implements ActionListener {
 	}
 
 	private void anstellen() {
-		// TODO
-		Schueler letzter = new Schueler(ui.getEingabeSchueler());
-		warteschlange.enqueue(letzter);
+		// TODO: Ein neuer Schüler soll sich hinten in der Schlane anstellen
+		// TIPP: Schueler letzter = new Schueler(ui.getEingabeSchueler());
+		
 	}
 
 	private void bedienen() {
-		// TODO
-		Schueler naechster = warteschlange.front();
-		System.out.println("Schueler wird bedient: " + naechster);
-		warteschlange.dequeue();
+		// TODO: Der erste Schüler der Warteschlange soll bedient werden
+		// Dazu soll sein Name auf der Konsole ausgegeben werden
+		// und danach soll er aus der Warteschlange entfernt werden
+		// TIPP: Schueler naechster = wartesch // TODO
 	}
 
 	private void alleBedienen() {
-		// TODO
-		while (warteschlange.isEmpty() == false) {
-			bedienen();
-		}
+		// TODO: Alle Schueler in der Schlange sollen bedient werden
+		// TIPP: Benutze deine Teillösung um einzelne Schüler zu bedienen
 	}
 
 	private void anzeigeAktualisieren() {
