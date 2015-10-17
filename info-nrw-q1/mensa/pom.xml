@@ -18,7 +18,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>info.nrw.q1.container.MensaStart</mainClass>
+							<mainClass>info.nrw.q1.mensa.MensaStart</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
