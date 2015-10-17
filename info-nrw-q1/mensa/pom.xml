@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>mensa</artifactId>
-	<version>0.1</version>
+	<version>0.1-SNAPSHOT</version>
 
 	<build>
 		<plugins>
@@ -18,7 +18,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>info.nrw.q1.container.ContainerStart</mainClass>
+							<mainClass>info.nrw.q1.container.MensaStart</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
