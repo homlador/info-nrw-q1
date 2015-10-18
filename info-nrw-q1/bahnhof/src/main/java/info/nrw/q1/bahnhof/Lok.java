@@ -18,15 +18,7 @@ public class Lok {
 	}
 	
 	public void alleWaggonsueberpruefen() {
-		while (gleisA.isEmpty() == false) {
-			Waggon oberstes = gleisA.top();
-			if (oberstes.istOK() == true) {
-				gleisB.push(oberstes);
-			} else {
-				gleisC.push(oberstes);
-			}
-			gleisA.pop();
-		}
+		// TODO
 	}
 
 	public void sortiertRangieren(Stack<Waggon> herkunftsGleis, Stack<Waggon> hilfsGleis, Stack<Waggon> zielGleis) {
@@ -82,6 +74,7 @@ public class Lok {
 		l.ausgabe();
 			
 		l.alleWaggonsueberpruefen();
+		// TODO: Die folgende Zeile einkommentieren um das Sortieren zu testen
 		//l.sortiertRangieren(l.gleisA, l.gleisB, l.gleisC);
 		
 		l.ausgabe();

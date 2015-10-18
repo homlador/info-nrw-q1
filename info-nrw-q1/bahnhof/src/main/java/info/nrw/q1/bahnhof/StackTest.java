@@ -29,31 +29,8 @@ public class StackTest
     public void testEmpty() {
         assertTrue("Neuer Stack muss leer sein", stack.isEmpty());
     } 
-           
-    @Test
-    public void testPushEmpty() {
-        String foo = "Foo";
-        
-        stack.push(foo);
-        assertFalse("Stack darf nicht leer sein, wenn Objekt gepusht", stack.isEmpty());
-    } 
-    
-    @Test
-    public void testPushPopEmpty() {
-        String foo = "Foo";
-        
-        stack.push(foo);
-        stack.pop();
-        
-        assertTrue("Stack muss leer sein, wenn alle Elemente gepopt", stack.isEmpty());
-    }    
-    
-    @Test
-    public void testPushTopEmpty() {
-        String foo = "Foo";
-  
-        stack.push(foo);
-        assertEquals("top() muss das oberste Element zurückgeben", foo, stack.top());
-        assertFalse("top() darf das oberste Element nicht löschen", stack.isEmpty());
-    }
+         
+    // TODO: Implementiere weitere Test Methoden
+    // Orientiere dich an dem obigen Beispiel.
+    // Benutze dazu die Methoden assertTrue(), assertFalse() und assertEquals()
 }
