@@ -14,9 +14,12 @@ public class Waggon {
 	}
 	
 	public boolean istOK() {
-		System.out.println("Normaler Waggon.");
+		System.out.println(this + " Normaler Waggon: OK");
 		return true;
 	}
 	
+	public String toString() {
+		return "Waggon Nr. " + nummer;
+	}
 }
 
