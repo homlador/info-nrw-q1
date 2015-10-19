@@ -54,17 +54,18 @@ public class Lok {
 		Stack<Waggon> temp = new Stack<Waggon>();
 		while (gleis.isEmpty() == false) {
 			temp.push(gleis.top());
+			System.out.print(gleis.top().gibNummer());
 			gleis.pop();
-		}
-
-		while (temp.isEmpty() == false) {
-			Waggon w = temp.top();
-			System.out.print(w.gibNummer());
-			gleis.push(w);
-			temp.pop();
-			if (temp.isEmpty() == false) {
+			if (gleis.isEmpty() == false) {
 				System.out.print(",");
 			}
+		}
+		while (temp.isEmpty() == false) {
+			Waggon w = temp.top();
+			
+			gleis.push(w);
+			temp.pop();
+			
 		}
 		System.out.println();
 	}
