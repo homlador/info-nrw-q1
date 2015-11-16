@@ -24,12 +24,14 @@ Das Programm ist die Grundversion eines vektorbasierten Zeichenprogramms: Es kan
 Achtet darauf, euren Code zu kommentieren, d.h. jede mit TODO markierte Klasse und Methode muss durch JavaDoc-Kommentare kurz beschrieben werden (inkl. Parameter und Rückgabewert). Besondere Stellen in einzelnen Methoden sollten zusätzlich erläutert werden.
 
 ## Teil II: Dokumentation
-    
+         
+* Erstelle ein Implementationsdiagramm (Abgabe als Bilddatei im Verzeichnis "doc")
+
 * Erkläre anhand der Klasse Kreis das „Geheimnisprinzip“ (Kapselung)!
+
+* Erkläre die Klassenhierarchie von Action und SizeAction! Welche Rolle spielt Polymorphie in dem Programm?
          
-* Erkläre die Klassenhierarchie von Action, SizeAction und WidthAction! Welche Rolle spielt Polymorphie in dem Programm?
-         
-* Erkläre die Zeile „private Stack<Action> undoStack;“ in der Klasse KreisMaler: Objekte welchen Typs kann der Stack verwalten? Welche Rolle spielt generische Programmierung dabei?
+* Erkläre die Zeile „private Stack<Action> undoStack;“ in der Klasse KreisMaler: Objekte welchen Typs kann der Stack verwalten?  Welchen Vorteil bietet generische Programmierung?
 
 * *Fortgeschrittene:* Action ist eine "abstrakte Klasse", was bedeutet das? Warum wurde diese Lösung gewählt? Erkläre den Konstruktor der Klasse SizeAction, insbesondere die Zeile „super(pKreis);“.
 
