@@ -69,14 +69,6 @@ public class KreisMalerView extends JFrame
         sizeField.setValue(60);
         add(sizeField);
 
-        widthButton = new JButton("width");
-        widthButton.addActionListener(controller);
-        add(widthButton);
-
-        widthField = new JSpinner();
-        widthField.setValue(10);
-        add(widthField);
-                
         canvas = new CanvasPanel();
         add(canvas);
 

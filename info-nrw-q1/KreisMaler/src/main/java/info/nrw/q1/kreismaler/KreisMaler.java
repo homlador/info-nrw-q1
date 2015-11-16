@@ -1,13 +1,15 @@
 package info.nrw.q1.kreismaler;
 import info.nrw.q1.kreismaler.actions.Action;
 import info.nrw.q1.kreismaler.actions.SizeAction;
-import info.nrw.q1.kreismaler.actions.WidthAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * TODO
+ */
 public class KreisMaler implements ActionListener
 {
 	private KreisMalerView kmv;
@@ -27,13 +29,13 @@ public class KreisMaler implements ActionListener
         new Thread( new PrinterCheck() ).start();        
     }
 
+    /**
+     * TODO
+     */
     public void actionPerformed(ActionEvent e) {        
         if (e.getActionCommand().equals("size")) {
             SizeAction sizeAction = new SizeAction(kreis, kmv.getSizeArgument() );
             doAction(sizeAction);
-        } else if (e.getActionCommand().equals("width")) {
-            WidthAction widthAction = new WidthAction(kreis, kmv.getWidthArgument() );                        
-            doAction(widthAction);
         } else if (e.getActionCommand().equals("undo")) {
             undoLastAction();
         }  else if (e.getActionCommand().equals("drucken")) {
@@ -41,19 +43,19 @@ public class KreisMaler implements ActionListener
         }
     }
 
-	/**
-     * TODO: Aktion soll gespeichert und durchgeführt werden
+    /**
+     * TODO
      */
     public void doAction(Action a) {
-    	// TODO
-        undoStack.push(a);
-        a.doAction();
+    	a.doAction();
+    	
+    	// TODO: Aktion soll gespeichert werden
         
         updateStatus();
     }
     
     /**
-     * TODO: Eine Hilfsmethode, welche die Benutzeroberfloche aktualisiert und anzeigt, welche
+     * Eine Hilfsmethode, welche die Benutzeroberfloche aktualisiert und anzeigt, welche
      * Aktionen rückgängig gemacht werden können und welche Dokumente auf den Druck warten
      */
     private void updateStatus() {
@@ -72,40 +74,35 @@ public class KreisMaler implements ActionListener
         kmv.repaint();
 	}
 
-	/**
-     * TODO: Letzte Aktion soll rückgängig gemacht werden
+    /**
+     * TODO
      */
     public void undoLastAction() {
-    	// TODO
-        if (undoStack.isEmpty() == true) {
-            return;
-        }
-        Action a = undoStack.top();
-        a.undoAction();
-        undoStack.pop();
-        updateStatus();
+    	// TODO: Letzte Aktion soll rückgängig gemacht werden
+
+    	updateStatus();
     }
-   
+     
     /**
-     * TODO: Printjob der Druckwarteschlange hinzufügen 
-     */   
+     * TODO
+     */
     private void addToPrinter() {
     	SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     	PrintJob printJob = new PrintJob( dateFormat.format(new Date()) + " " + kreis );
     	
-    	// TODO
-		printQueue.enqueue(printJob);
+    	// TODO: Printjob der Druckwarteschlange hinzufügen
+	
 		updateStatus();
     }
 
 	/**
      * Methode wird automatisch aufgerufen, wenn der (simulierte) Drucker
-     * gedruckt hat.
-     * TODO: Der PrintJob muss aus der Warteschlange entfernt werden.
+     * gedruckt hat. 
      */
     private void printingDone() {
-    	// TODO
-		printQueue.dequeue();
+    	// TODO: Der PrintJob muss aus der Warteschlange entfernt werden.
+		
+    	
 		updateStatus();
     }
     
