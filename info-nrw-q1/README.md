@@ -5,8 +5,9 @@ Programme für den Informatik-Unterricht in NRW in der Oberstufe (Q1)
 ## TODO
 * Deploy:
 
-package funktioniert momentan nur aus dem root folder
-assembly quatsch muss gefixt werden
+version raus?
+blueJ projekt erstellen
+package muss zweimal laufen, damit das pdf im src-zip landet
 
 https://maven.apache.org/plugins/maven-assembly-plugin/advanced-module-set-topics.html
 
