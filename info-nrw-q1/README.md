@@ -28,6 +28,7 @@ Diese dann rausschmeissen und paketieren
 oder halt in den schueler-vorlage branch committen
 
 ## TODO
+* BlueJ-Projekte erstellen / vorgeben?
 * Das PDF kommt nur in das ZIP-File bei 'mvn package', wenn es vorher existierte
 Zum reproduzieren: mvn clean && mvn package -> pdfs fehlen 
 Workaround: 2 mal 'mvn package' aufrufen
