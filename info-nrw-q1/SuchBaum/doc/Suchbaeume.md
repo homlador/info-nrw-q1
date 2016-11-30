@@ -11,7 +11,7 @@ Zum Beispiel könnten Kunden nach ihrer Kundennummer geordnet in einem binären 
 ## Aufgaben
 
 1. Erstellen Sie die Suchbäume, die entstehen, wenn die folgenden Daten in der angegebenen Reihenfolge eingefügt werden:
-a) 23, 5, 12, 42, 73, 2, 1, 3
+a) 23, 5, 12, 42, 73, 38, 2, 1, 3
 b) 1, 2, 3, 4, 5
 
 2. Welche Traversierung eines Suchbaumes ergibt eine sortierte Liste?

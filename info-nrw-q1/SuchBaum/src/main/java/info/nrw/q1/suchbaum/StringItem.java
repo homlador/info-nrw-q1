@@ -34,13 +34,11 @@ public class StringItem implements ComparableContent<StringItem> {
 	}
 
 	public boolean isEqual(StringItem pContent) {		
-		// TODO: benutze die Methode equals der Klasse String
-		return false; // TODO: Zeile entfernen
+		return content.equals(pContent.getContent());
 	}
 
 	public boolean isLess(StringItem pContent) {
-		// TODO: benutze die Methode compareTo() der Klassse String (siehe isGreater())
-		return false;  // TODO: Zeile entfernen
+		return content.compareTo(pContent.getContent()) < 0;
 	}
 	
 	public String toString() {

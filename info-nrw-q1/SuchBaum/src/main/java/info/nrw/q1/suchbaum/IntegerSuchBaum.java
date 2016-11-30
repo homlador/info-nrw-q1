@@ -19,11 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-/**
- * TODO: Konsole für Traversierungen 
- * TODO: Tiereraten Anflanschen 
- * TODO: Visualisierungen beim Einfügen etc.
- */
 public class IntegerSuchBaum extends JFrame {
 
 	protected BinarySearchTree<IntegerItem> baum;
@@ -56,34 +51,6 @@ public class IntegerSuchBaum extends JFrame {
 		dateiItemNeu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				neu();
-			}
-		});
-
-		JMenuItem dateiItemInfo = new JMenuItem("Info");
-		dateiMenu.add(dateiItemInfo);
-		dateiItemInfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				JPanel panel = new JPanel();
-				panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));						
-				panel.add(new JLabel(Version.VERSION));
-				panel.add(new JLabel("Autoren siehe README"));
-				panel.add(new JLabel("Code, Arbeitsblätter, Lösungen unter:"));
-				final String projektSeite = "https://homlador.github.io/informatik-nrw-q1";
-				JButton b = new JButton(projektSeite);
-				b.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						if (Desktop.isDesktopSupported()) {
-							try {
-								Desktop.getDesktop().browse(new URI(projektSeite));
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-				panel.add(b);
-				JOptionPane.showMessageDialog(null, panel, "Info", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 

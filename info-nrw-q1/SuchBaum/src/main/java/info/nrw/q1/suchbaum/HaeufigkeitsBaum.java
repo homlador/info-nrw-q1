@@ -1,39 +1,21 @@
 package info.nrw.q1.suchbaum;
 
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.net.URI;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-/**
- * Implementiere die mit TODO markierten Methoden:
- * 		wortMitHaeufigkeitEinfuegen()
- * 		traverseInorderToList()
- * 		erstelleSortierteListe()
- * 
- * Ausserdem musst du in der Klasse StringItem eine Kleinigkeit anpassen
- * 
- * Zusatsaufgaben:
- * 		vonDateiEinfuegen()
- *		gibHoehe()
- */
 public class HaeufigkeitsBaum extends JFrame {
 
 	protected BinarySearchTree<StringItem> baum;
@@ -66,35 +48,6 @@ public class HaeufigkeitsBaum extends JFrame {
 		dateiItemNeu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				neu();
-			}
-		});
-
-		JMenuItem dateiItemInfo = new JMenuItem("Info");
-		dateiMenu.add(dateiItemInfo);
-		dateiItemInfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				JPanel panel = new JPanel();
-				panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-								
-				panel.add(new JLabel(Version.VERSION));
-				panel.add(new JLabel("Autoren siehe README"));
-				panel.add(new JLabel("Code, Arbeitsblätter, Lösungen unter:"));
-				final String projektSeite = "https://homlador.github.io/informatik-nrw-q1";
-				JButton b = new JButton(projektSeite);
-				b.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						if (Desktop.isDesktopSupported()) {
-							try {
-								Desktop.getDesktop().browse(new URI(projektSeite));
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-				panel.add(b);
-				JOptionPane.showMessageDialog(null, panel, "Info", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
@@ -133,14 +86,15 @@ public class HaeufigkeitsBaum extends JFrame {
 			}
 		});
 
-		JMenuItem integerItemSatzEinfuegen = new JMenuItem("Satz einfügen");
+		JMenuItem integerItemSatzEinfuegen = new JMenuItem("Buchstaben aus Satz einfügen");
 		integerMenu.add(integerItemSatzEinfuegen);
 		integerItemSatzEinfuegen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				satzEinfuegen();
+				buchstabenAusSatzEinfuegen();
 			}
 		});
 		
+		/*
 		JMenuItem integerItemDateiEinfuegen = new JMenuItem("Von Datei einfügen");
 		integerMenu.add(integerItemDateiEinfuegen);
 		integerItemDateiEinfuegen.addActionListener(new ActionListener() {
@@ -148,6 +102,7 @@ public class HaeufigkeitsBaum extends JFrame {
 				vonDateiEinfuegen();
 			}
 		});
+		*/
 
 		JMenu werkzeugeMenu = new JMenu("Werkzeuge");
 		menuBar.add(werkzeugeMenu);
@@ -160,7 +115,7 @@ public class HaeufigkeitsBaum extends JFrame {
 			}
 		});
 		
-		JMenuItem werkzeugeItemInOrder = new JMenuItem("InOrder Traversierung");
+		JMenuItem werkzeugeItemInOrder = new JMenuItem("InOrder Traversierung ausgeben");
 		werkzeugeMenu.add(werkzeugeItemInOrder);
 		werkzeugeItemInOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -170,7 +125,7 @@ public class HaeufigkeitsBaum extends JFrame {
 			}
 		});
 
-		JMenuItem werkzeugeItemSortierteListe = new JMenuItem("Sortierte Liste ausgeben");
+		JMenuItem werkzeugeItemSortierteListe = new JMenuItem("Nach Haufigkeit sortierte Liste ausgeben");
 		werkzeugeMenu.add(werkzeugeItemSortierteListe);
 		werkzeugeItemSortierteListe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -196,7 +151,7 @@ public class HaeufigkeitsBaum extends JFrame {
 	
 	private void einfuegen() {
 		String s = JOptionPane.showInputDialog("Einfügen", "");		
-		wortMitHaeufigkeitEinfuegen(s);
+		itemMitHaeufigkeitEinfuegen(s);
 		repaint();
 	}
 
@@ -208,11 +163,11 @@ public class HaeufigkeitsBaum extends JFrame {
 	 * 
 	 * @param s Das in den Suchbaum einzufügende Wort
 	 */
-	private void wortMitHaeufigkeitEinfuegen(String s) {
+	private void itemMitHaeufigkeitEinfuegen(String s) {
 		StringItem item = new StringItem(s);
 		
-		// Tipp: StringItem old = baum. 
-		
+		// Tipp: StringItem old = (StringItem) baum. 
+	
 	}
 		
 	private void suchen() {
@@ -226,18 +181,29 @@ public class HaeufigkeitsBaum extends JFrame {
 	}
 
 	private void loeschen() {
-		String s = JOptionPane.showInputDialog(this, "Einfügen");
+		String s = JOptionPane.showInputDialog(this, "Was soll gelöscht werden?");
 		baum.remove(new StringItem(s));
 		repaint();
 	}
 	
-
-	private void satzEinfuegen() {		
-		String s = JOptionPane.showInputDialog("Einfügen", "");	
+	private void buchstabenAusSatzEinfuegen() {		
+		String s = JOptionPane.showInputDialog("Satz eingeben", "");
+		s = s.replaceAll(" ", "");
+		s = s.toLowerCase();
+		
+		for (int i=0; i< s.length(); i++) {
+			itemMitHaeufigkeitEinfuegen(""+ s.charAt(i));
+		}
+		
+		repaint();
+	}
+	
+	private void worteAusSatzEinfuegen() {		
+		String s = JOptionPane.showInputDialog("Satz eingeben", "");	
 		String[] words = inWorteTeilen(s);
 		
 		for (int i=0; i< words.length; i++) {
-			wortMitHaeufigkeitEinfuegen(words[i]);
+			itemMitHaeufigkeitEinfuegen(words[i]);
 		}
 		repaint();
 	}
@@ -257,7 +223,18 @@ public class HaeufigkeitsBaum extends JFrame {
 
 		try {
 			bufferedReader = new BufferedReader(new FileReader("text.txt"));
-			// TODO			
+
+			while ((s = bufferedReader.readLine()) != null) {
+				// Jede Zeit in Kleinbuchstaben umwandeln,
+				// Sonderzeichen entfernen und in Worte aufteilen
+				String[] words = inWorteTeilen(s);
+
+				for (int i = 0; i < words.length; i++) {
+					if (!words[i].equals("")) {
+						itemMitHaeufigkeitEinfuegen(words[i]);
+					}
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -302,41 +279,31 @@ public class HaeufigkeitsBaum extends JFrame {
 		JOptionPane.showMessageDialog(this, scroll, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	@SuppressWarnings("rawtypes")
-	protected void sortierteListeAusgeben() {
-		List sortierteListe = erstelleSortierteListe(baum);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setSize(400, 200);	
-		textArea.setLineWrap(true);
-		
-		JScrollPane scroll = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setPreferredSize(new Dimension(400, 200));
-		
-		sortierteListe.toFirst();
-		while (sortierteListe.hasAccess()) {
-			textArea.append(sortierteListe.getContent() + ",");
-			sortierteListe.next();
-		}
-
-		JOptionPane.showMessageDialog(this, scroll, "Sortierte Liste", JOptionPane.INFORMATION_MESSAGE);
-	}
-
 	/**
 	 * TODO
 	 * Der erstellte Baum soll genutzt werden, um eine sortierte Liste der häufigsten Wörter zu erhalten
-	 * Nutze zum Sortieren einen BinärenSuchbaum!
+	 * Nutze zum Sortieren einen BinärenSuchbaum, in welchen du CountedStringItems einfügst.
 	 * 
 	 * @return List Eine nach Häufigkeit der Worte sortierte Liste
 	 */
-	protected List<CountedStringItem> erstelleSortierteListe(BinarySearchTree<StringItem> b) {
+	private List<CountedStringItem> erstelleSortierteListe(BinarySearchTree<StringItem> b) {
 		List<StringItem> l = new List<StringItem>();
-		traverseInorderToList(baum, l);		
+		traverseInorderToList(baum, l);	
 		
+		// Neuen Suchbaum anlegen
 		BinarySearchTree<CountedStringItem> sortierterBaum = new BinarySearchTree<CountedStringItem>();
-		List<CountedStringItem> sortierteListe = new List<CountedStringItem>();
 		
-		// TODO
+		// TODO: Suchbaum füllen
+		
+		// Neuen Scuhbaum anzeigen
+		JFrame frame = new JFrame("Sortierter Baum");
+		frame.setSize(800, 800);
+		frame.add( new BinarySearchTreeView(sortierterBaum));
+		frame.setVisible(true);
+		
+		// Die sortierte Liste kann nun durch eine InOrder-Traversierung erstellt werden
+		List<CountedStringItem> sortierteListe = new List<CountedStringItem>();
+		traverseInorderToList(sortierterBaum, sortierteListe);
 
 		return sortierteListe;
 	}
@@ -350,8 +317,21 @@ public class HaeufigkeitsBaum extends JFrame {
 	 */	
 	@SuppressWarnings("rawtypes")
 	private int gibHoehe(BinarySearchTree wurzel) {
-		// TODO
-		return -1;
+		if (wurzel == null || wurzel.isEmpty()) {
+			return 0;
+		} else {
+			int l = gibHoehe(wurzel.getLeftTree());
+			int r = gibHoehe(wurzel.getRightTree());
+			if (l > r) {
+				return 1 + l;
+			} else {
+				return 1 + r;
+			}
+
+			// Einfacher:
+			// Math.max(heightOfBinarySearchTree(t.getLeftTree()),
+			// heightOfBinarySearchTree(t.getRightTree()));
+		}
 	}
 	
 	public static void main(String[] args) {
