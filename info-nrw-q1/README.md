@@ -5,6 +5,9 @@ Programme für den Informatik-Unterricht in NRW in der Oberstufe (Q1)
 ## TODO
 * Deploy:
 
+package funktioniert momentan nur aus dem root folder
+assembly quatsch muss gefixt werden
+
 https://maven.apache.org/plugins/maven-assembly-plugin/advanced-module-set-topics.html
 
   * Skript um branch zu wechseln und ant aufzurufen
