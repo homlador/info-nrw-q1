@@ -32,7 +32,7 @@ Suchbäume  können genutzt werden, um die Häufigkeiten von Zeichen in Texten z
 
 3. Lassen Sie sich über dem Menüpunkt "InOrder Traversierung ausgeben" eine nach dem Alphabet sortierte Liste der Buchstaben anzeigen. Implementieren Sie dazu ```traverseInorderToList```.
 
-4. Vervollständigen Sie nun die Methode ```erstelleSortierteListe()```, welche die Buchstaben sortiert nach ihrer Häufigkeit ausgeben soll. Durchlaufen Sie dazu den Baum und fügen Sie alle Elemente in einen neuen, nach der Häufigkeit sortierten Baum ein. Verwenden Sie dazu die Klasse ```CountedContent```, welche Sie noch bearbeiten müssen.
+4. Vervollständigen Sie nun die Methode ```erstelleSortierteListe()```, welche die Buchstaben sortiert nach ihrer Häufigkeit ausgeben soll. Durchlaufen Sie dazu den Baum und fügen Sie alle Elemente in einen neuen, nach der Häufigkeit sortierten Baum ein. Verwenden Sie dazu die Klasse ```CountedStringItem```, welche Sie noch bearbeiten müssen.
 
 5. Der maximale Aufwand für das Suchen, ist proportional zur Baumhöhe. Ein extrem ungünstiger Baum ist zu einer Liste degeneriert. Ein balancierter Baum hat eine möglichst geringe Höhe. Gegenüber einer Liste ist der durchschnittliche Aufwand zum Finden eines Elements dann nicht mehr O(n) (linear) sondern O(log n) logarithmisch. Erstellen Sie einen Suchbaum für die Zahlen von 1-15, mit der eine Zahl möglichst schnell gefunden wird.
 
