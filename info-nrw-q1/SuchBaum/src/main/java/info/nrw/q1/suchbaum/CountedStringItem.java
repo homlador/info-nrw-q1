@@ -33,15 +33,18 @@ public class CountedStringItem implements ComparableContent<CountedStringItem> {
 	}
 
 	public boolean isGreater(CountedStringItem pContent) {
-		return count > pContent.getCount();
+		// TODO
+		return false;
 	}
 
 	public boolean isEqual(CountedStringItem pContent) {
-		return count == pContent.getCount();
+		// TODO
+		return false;
 	}
 
 	public boolean isLess(CountedStringItem pContent) {
-		return !isGreater(pContent);
+		// TODO
+		return false;
 	}
 
 	public String toString() {

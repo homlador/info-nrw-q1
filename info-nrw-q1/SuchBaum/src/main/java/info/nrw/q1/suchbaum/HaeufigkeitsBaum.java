@@ -317,21 +317,8 @@ public class HaeufigkeitsBaum extends JFrame {
 	 */	
 	@SuppressWarnings("rawtypes")
 	private int gibHoehe(BinarySearchTree wurzel) {
-		if (wurzel == null || wurzel.isEmpty()) {
-			return 0;
-		} else {
-			int l = gibHoehe(wurzel.getLeftTree());
-			int r = gibHoehe(wurzel.getRightTree());
-			if (l > r) {
-				return 1 + l;
-			} else {
-				return 1 + r;
-			}
-
-			// Einfacher:
-			// Math.max(heightOfBinarySearchTree(t.getLeftTree()),
-			// heightOfBinarySearchTree(t.getRightTree()));
-		}
+		return -1;
+		// TODO
 	}
 	
 	public static void main(String[] args) {
