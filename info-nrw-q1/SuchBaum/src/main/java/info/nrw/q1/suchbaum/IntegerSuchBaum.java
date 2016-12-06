@@ -151,6 +151,15 @@ public class IntegerSuchBaum extends JFrame {
 				sortierteListeAusgeben();
 			}
 		});
+		
+
+		JMenuItem werkzeugeItemTraversierungen = new JMenuItem("Traversierungen ausgeben");
+		werkzeugeMenu.add(werkzeugeItemTraversierungen);
+		werkzeugeItemTraversierungen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				traversierungenAusgeben();
+			}
+		});
 
 		JMenuItem werkzeugeItemAusgleichen = new JMenuItem("Ausgleichen");
 		werkzeugeMenu.add(werkzeugeItemAusgleichen);
@@ -259,6 +268,26 @@ public class IntegerSuchBaum extends JFrame {
 		}
 	}
 
+	protected void traversePostOrderToList(BinarySearchTree b, List l) {
+		if (b.isEmpty()) {
+			// nichts zu tun, da Baum leer ist
+		} else {
+			traversePostOrderToList(b.getLeftTree(), l);
+			traversePostOrderToList(b.getRightTree(), l);
+			l.append(b.getContent());
+		}
+	}
+	
+	protected void traversePreOrderToList(BinarySearchTree b, List l) {
+		if (b.isEmpty()) {
+			// nichts zu tun, da Baum leer ist
+		} else {
+			l.append(b.getContent());
+			traversePreOrderToList(b.getLeftTree(), l);
+			traversePreOrderToList(b.getRightTree(), l);
+		}
+	}
+	
 	@SuppressWarnings("rawtypes")
 	protected List erstelleSortierteListe(BinarySearchTree baum) {
 		List l = new List();
@@ -266,6 +295,46 @@ public class IntegerSuchBaum extends JFrame {
 		return l;
 	}
 
+	protected void traversierungenAusgeben() {
+		JTextArea textArea = new JTextArea();
+		textArea.setSize(400, 200);	
+		textArea.setLineWrap(true);
+		
+		JScrollPane scroll = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setPreferredSize(new Dimension(400, 200));
+		
+		textArea.append("PreOrder: ");
+		List preOrder = new List();
+		traversePreOrderToList(baum, preOrder);
+		preOrder.toFirst();
+		while (preOrder.hasAccess()) {
+			textArea.append(preOrder.getContent() + ",");
+			preOrder.next();
+		}
+		textArea.append("\n");
+		
+		textArea.append("InOrder: ");
+		List inOrder = new List();
+		traverseInorderToList(baum, inOrder);
+		inOrder.toFirst();
+		while (inOrder.hasAccess()) {
+			textArea.append(inOrder.getContent() + ",");
+			inOrder.next();
+		}
+		textArea.append("\n");
+		
+		textArea.append("PostOrder: ");
+		List postOrder = new List();
+		traversePostOrderToList(baum, postOrder);
+		postOrder.toFirst();
+		while (postOrder.hasAccess()) {
+			textArea.append(postOrder.getContent() + ",");
+			postOrder.next();
+		}
+
+		JOptionPane.showMessageDialog(this, scroll, "Traversierungen", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	@SuppressWarnings("rawtypes")
 	protected void sortierteListeAusgeben() {
 		List sortierteListe = erstelleSortierteListe(baum);
