@@ -54,34 +54,6 @@ public class IntegerSuchBaum extends JFrame {
 			}
 		});
 
-		JMenuItem dateiItemInfo = new JMenuItem("Info");
-		dateiMenu.add(dateiItemInfo);
-		dateiItemInfo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				JPanel panel = new JPanel();
-				panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));						
-				panel.add(new JLabel(Version.VERSION));
-				panel.add(new JLabel("Autoren siehe README"));
-				panel.add(new JLabel("Code, Arbeitsblätter, Lösungen unter:"));
-				final String projektSeite = "https://homlador.github.io/informatik-nrw-q1";
-				JButton b = new JButton(projektSeite);
-				b.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						if (Desktop.isDesktopSupported()) {
-							try {
-								Desktop.getDesktop().browse(new URI(projektSeite));
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-				panel.add(b);
-				JOptionPane.showMessageDialog(null, panel, "Info", JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
-
 		JMenuItem dateiItemBeenden = new JMenuItem("Beenden");
 		dateiMenu.add(dateiItemBeenden);
 		dateiItemBeenden.addActionListener(new ActionListener() {
@@ -225,7 +197,7 @@ public class IntegerSuchBaum extends JFrame {
 	}
 
 	protected void nEinfuegen() {
-		int anzahl = Integer.parseInt(JOptionPane.showInputDialog(this, "wie viele einfügen?", "100"));
+		int anzahl = Integer.parseInt(JOptionPane.showInputDialog(this, "wie viele einfügen?", "15"));
 		int zahl;
 		for (int i = 0; i < anzahl; i++) {
 			do {
@@ -331,10 +303,22 @@ public class IntegerSuchBaum extends JFrame {
 			textArea.append(postOrder.getContent() + ",");
 			postOrder.next();
 		}
+		
+		textArea.append("\n");
+		textArea.append("Max: " + max(baum));
+		
 
 		JOptionPane.showMessageDialog(this, scroll, "Traversierungen", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	private IntegerItem max(BinarySearchTree<IntegerItem> b) {
+		if (b.getRightTree().getContent() != null) {
+			return max(b.getRightTree());
+		} else {
+			return b.getContent();
+		}
+	}
+
 	@SuppressWarnings("rawtypes")
 	protected void sortierteListeAusgeben() {
 		List sortierteListe = erstelleSortierteListe(baum);
